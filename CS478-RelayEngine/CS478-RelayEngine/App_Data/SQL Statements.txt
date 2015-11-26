@@ -1,1 +1,71 @@
-﻿
+﻿CREATE TABLE USERS(
+USER_ID INT UNIQUE NOT NULL,
+USER_FNAME VARCHAR(20) NOT NULL,
+USER_LNAME VARCHAR(20) NOT NULL,
+USER_PHONE CHAR(10) NOT NULL,
+
+PRIMARY KEY (USER_ID)
+);
+
+CREATE TABLE ADMINISTRATOR(
+USER_ID INT UNIQUE NOT NULL,
+ADMIN_TOKENS INT NOT NULL,
+
+PRIMARY KEY (USER_ID),
+FOREIGN KEY (USER_ID) REFERENCES  USERS(USER_ID)
+);
+
+CREATE TABLE LIST(
+LIST_ID INT UNIQUE NOT NULL,
+LIST_NAME VARCHAR(50) NOT NULL,
+
+PRIMARY KEY (LIST_ID)
+);
+
+CREATE TABLE SUBSCRIPTION(
+SUB_ID INT UNIQUE NOT NULL,
+USER_ID INT NOT NULL,
+LIST_ID INT NOT NULL,
+
+PRIMARY KEY (SUB_ID),
+FOREIGN KEY (USER_ID) REFERENCES USERS(USER_ID),
+FOREIGN KEY (LIST_ID) REFERENCES LIST(LIST_ID)
+);
+
+CREATE TABLE SENDER(
+SENDER_ID INT UNIQUE NOT NULL,
+SENDER_EMAIL VARCHAR(30) NOT NULL,
+
+PRIMARY KEY (SENDER_ID)
+);
+
+CREATE TABLE AUTHORIZATIONS(
+AUTH_ID INT UNIQUE NOT NULL,
+LIST_ID INT NOT NULL,
+SENDER_ID INT NOT NULL,
+
+PRIMARY KEY (AUTH_ID),
+FOREIGN KEY (LIST_ID) REFERENCES LIST(LIST_ID),
+FOREIGN KEY (SENDER_ID) REFERENCES SENDER(SENDER_ID)
+);
+
+INSERT INTO USERS(USER_ID,USER_FNAME,USER_LNAME,USER_PHONE) 
+VALUES (0,'Lamar','Rodgers','3281763886'),(1,'Tashya','Griffith','3878693363'),(2,'Echo','Sims','7036598094'),(3,'Cassidy','Mitchell','3728051597'),(4,'Signe','Miles','5353534416'),(5,'Fleur','Henderson','8786273576'),(6,'Juliet','Buck','5562156285'),(7,'Melinda','Melton','4239725073'),(8,'Amir','Tucker','7605313408'),(9,'Lareina','Austin','1311013540'),(10,'Clementine','Beasley','5448144124'),(11,'Alice','Figueroa','1979075262'),(12,'Florence','Hardy','9991881621'),(13,'Miranda','Marshall','4355559997'),(14,'Gray','Montoya','9217741224'),(15,'Charlotte','Conley','1757792725'),(16,'Sonya','Wilson','2857899183'),(17,'Mira','Ayers','9991608560'),(18,'Zoe','Strong','4707139747'),(19,'Shea','Osborne','9977149890'),(20,'Chantale','Newton','4516821700'),(21,'Aretha','Cameron','4043331868'),(22,'Ruby','Washington','7509160764'),(23,'Leilani','Jensen','4915654438'),(24,'Ciara','Tucker','6235401497'),(25,'Marcia','Oconnor','4031223907'),(26,'Neve','Key','6093873848'),(27,'Jamalia','Garza','7865590442'),(28,'Todd','Keith','2447028399'),(29,'Tana','Cote','8735517003'),(30,'Conan','Mcdonald','5377350659'),(31,'Kieran','Olson','5808790301'),(32,'Daquan','Guerra','6678879734'),(33,'Evelyn','Singleton','4937834966'),(34,'Elliott','Torres','1677124269'),(35,'Brennan','Graham','4719343621'),(36,'Lillith','Knox','8553662283'),(37,'Maia','Floyd','9636619347'),(38,'Ferris','Holden','3419882142'),(39,'Rigel','Miranda','5971743681'),(40,'Malachi','Faulkner','5164588421'),(41,'Lysandra','Casey','1033034996'),(42,'Xyla','Mcfadden','1702261221'),(43,'Dale','Zimmerman','9298358224'),(44,'Drew','Sanders','9475763890'),(45,'Beverly','Mueller','8936483384'),(46,'Sawyer','Maxwell','4978856158'),(47,'Jillian','Waters','7446029350'),(48,'Sage','Hernandez','9664570556'),(49,'Zeph','Dean','4269191867'),(50,'Barry','Torres','7871059211'),(51,'Whitney','Hood','2095318191'),(52,'Deirdre','Sweet','5966091940'),(53,'Lisandra','Williams','2308050125'),(54,'Orlando','Blevins','8175284733'),(55,'Victoria','Yates','6612132375'),(56,'Portia','Houston','1016319164'),(57,'Petra','Weeks','1076286770'),(58,'Garrett','Freeman','5963925737'),(59,'Meghan','Boyd','4059065995'),(60,'Deborah','Porter','1187213667'),(61,'Leonard','Combs','1418917924'),(62,'Fulton','Noel','1307673549'),(63,'Beatrice','Maxwell','8703776611'),(64,'Deacon','Acevedo','2922112042'),(65,'Mercedes','Ewing','4222743137'),(66,'Raya','Strickland','2848152778'),(67,'Wendy','King','5057335493'),(68,'Donna','Mack','2827489012'),(69,'Laith','Patton','8279138708'),(70,'Jescie','Kelley','6135479892'),(71,'Tiger','Bonner','6546881085'),(72,'Idona','Simpson','4225231902'),(73,'Darrel','Manning','6499675023'),(74,'Aiko','Brennan','6674597016'),(75,'Nadine','Drake','8513947266'),(76,'Indira','Keller','8827375121'),(77,'Salvador','Barrera','3064789405'),(78,'Shay','Mills','8009740504'),(79,'Imani','Black','6749266112'),(80,'Ila','Vazquez','6143501236'),(81,'Graiden','Finch','8751436360'),(82,'Avram','Garza','8362202002'),(83,'Maggie','Crawford','8402112243'),(84,'Demetria','Dejesus','9768326045'),(85,'Libby','Gibson','4378619705'),(86,'Calvin','Donaldson','6076403272'),(87,'Shoshana','Evans','8847418917'),(88,'Ivor','Mccoy','2095363905'),(89,'Germane','Callahan','5341719792'),(90,'Elvis','Sharp','5575492929'),(91,'Athena','Knapp','1076878726'),(92,'Kamal','Marsh','4539473938'),(93,'Steel','Farrell','6553867276'),(94,'Madonna','Klein','1882900527'),(95,'Steven','Levine','6621665468'),(96,'Raymond','Harrington','8447145251'),(97,'Lareina','Gibson','6524984428'),(98,'Michael','Mcgee','4915018818'),(99,'Amy','Stout','9815337379')
+;
+
+INSERT INTO LIST(LIST_ID,LIST_NAME)
+VALUES (0,'School Cancellation/Delays'),(1,'Lower School Sports'),(2,'Upper School Sports'),(3,'Lower School General Announcements'),(4,'Upper School General Announcements')
+;
+
+INSERT INTO SUBSCRIPTION(SUB_ID,USER_ID,LIST_ID)
+VALUES (0,1,1),(1,2,0),(2,3,3),(3,4,0),(4,5,2),(5,6,4),(6,7,3),(7,8,1),(8,9,2),(9,10,3),(10,11,0),(11,12,3),(12,13,2),(13,14,3),(14,15,2),(15,16,1),(16,17,0),(17,18,4),(18,19,0),(19,20,2)
+;
+
+INSERT INTO SENDER(SENDER_ID,SENDER_EMAIL)
+VALUES (0,'euismod.et.commodo@infelis.com'),(1,'at.arcu@faucibusorciluctus.com'),(2,'egestas@mus.com'),(3,'enim@ornareegestas.net'),(4,'Maecenas.libero.est@metus.org')
+;
+
+INSERT INTO AUTHORIZATIONS(AUTH_ID,LIST_ID,SENDER_ID)
+VALUES (0,0,0),(1,1,1),(2,2,2),(3,3,3),(4,4,4)
+;
+
