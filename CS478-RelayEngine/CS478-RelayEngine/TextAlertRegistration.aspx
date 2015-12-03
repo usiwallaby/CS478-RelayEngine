@@ -32,7 +32,11 @@
         <asp:Panel ID="Panel2" runat="server" CssClass="textAlertListPanelClass" style="text-decoration: underline">
             SMS Text Alert Lists<br />
             <asp:CheckBoxList ID="CheckBoxList1" runat="server">
-                <asp:ListItem></asp:ListItem>
+                <asp:ListItem>School Cancellations/Delays</asp:ListItem>
+                <asp:ListItem>Upper School Sports</asp:ListItem>
+                <asp:ListItem>Lower School Sports</asp:ListItem>
+                <asp:ListItem>Upper School General Announcements</asp:ListItem>
+                <asp:ListItem>Lower School General Announcements</asp:ListItem>
             </asp:CheckBoxList>
         </asp:Panel>
         <asp:Panel ID="Panel3" runat="server" Wrap="False">
