@@ -6,15 +6,7 @@
 
     void PageLoad(Object sender, EventArgs e)
     {
-        string orgSecCode = PreviousPage.OrgSecCode;
-        if (orgSecCode != "1234")
-        {
-            //pop up window with message?
-        }
-        
-        Label1.Text = PreviousPage.AreaCode + PreviousPage.FirstCellphone + PreviousPage.LastCellphone;
-        Label2.Text = PreviousPage.FirstName;
-        Label3.Text = PreviousPage.LastName;
+       
             
     }
 
