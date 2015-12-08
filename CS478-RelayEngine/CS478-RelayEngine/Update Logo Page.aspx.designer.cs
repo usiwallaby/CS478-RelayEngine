@@ -7,99 +7,90 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CS478_RelayEngine.Account {
+namespace CS478_RelayEngine {
     
     
-    public partial class TwoFactorAuthenticationSignIn {
+    public partial class Update_Logo_Page {
         
         /// <summary>
-        /// sendcode control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder sendcode;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Providers control.
+        /// Panel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Providers;
+        protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// ProviderSubmit control.
+        /// LogoImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ProviderSubmit;
+        protected global::System.Web.UI.WebControls.Image LogoImage;
         
         /// <summary>
-        /// verifycode control.
+        /// Panel2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder verifycode;
+        protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// SelectedProvider control.
+        /// FileUpload1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField SelectedProvider;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
         
         /// <summary>
-        /// ErrorMessage control.
+        /// Panel3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
+        protected global::System.Web.UI.WebControls.Panel Panel3;
         
         /// <summary>
-        /// FailureText control.
+        /// UploadNewLogoButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal FailureText;
+        protected global::System.Web.UI.WebControls.Button UploadNewLogoButton;
         
         /// <summary>
-        /// Code control.
+        /// Panel4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Code;
+        protected global::System.Web.UI.WebControls.Panel Panel4;
         
         /// <summary>
-        /// RememberBrowser control.
+        /// CancelButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox RememberBrowser;
-        
-        /// <summary>
-        /// CodeSubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CodeSubmit;
+        protected global::System.Web.UI.WebControls.Button CancelButton;
     }
 }
