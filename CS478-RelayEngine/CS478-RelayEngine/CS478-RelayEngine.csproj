@@ -157,10 +157,6 @@
     <Content Include="AddTokens.aspx" />
     <Content Include="AdminLogin.aspx" />
     <Content Include="App_Data\Project_Database.mdf" />
-    <Content Include="App_Data\Project_Database_2012.mdf" />
-    <Content Include="App_Data\Project_Database_2012_log.ldf">
-      <DependentUpon>Project_Database_2012.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\Project_Database_log.ldf">
       <DependentUpon>Project_Database.mdf</DependentUpon>
     </Content>
