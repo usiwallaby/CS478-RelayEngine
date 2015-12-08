@@ -47,7 +47,7 @@ namespace CS478_RelayEngine
                 con.Open();
                 String commandText = "SELECT LIST_ID FROM LIST WHERE LIST_ID IN (SELECT LIST_ID FROM AUTHORIZATIONS WHERE SENDER_ID IN (SELECT SENDER_ID FROM SENDER WHERE SENDER_EMAIL='egestas@mus.com'));";
 
-                using (SqlCommand cmd = new SqlCommand(commandText,con))
+                using (SqlCommand cmd = new SqlCommand(commandText, con))
                 {
                     dr = cmd.ExecuteReader();
                     while (dr.Read())
@@ -57,7 +57,7 @@ namespace CS478_RelayEngine
                     }
                     dr.Close();
                 }
-                
+
             }
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -96,6 +96,12 @@ namespace CS478_RelayEngine
                     dr.Close();
                 }
             }
+
+            CheckBox1.Text = CheckBox1.Text + " (" + sub_one.ToString() + " recipients)";
+            CheckBox2.Text = CheckBox2.Text + " (" + sub_two.ToString() + " recipients)";
+            CheckBox3.Text = CheckBox3.Text + " (" + sub_three.ToString() + " recipients)";
+            CheckBox4.Text = CheckBox4.Text + " (" + sub_four.ToString() + " recipients)";
+            CheckBox5.Text = CheckBox5.Text + " (" + sub_five.ToString() + " recipients)";
         }
 
         public void checkLists()
