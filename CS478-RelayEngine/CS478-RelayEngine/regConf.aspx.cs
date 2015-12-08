@@ -37,6 +37,7 @@ namespace CS478_RelayEngine
         protected void Button1_Click(object sender, EventArgs e)
         {
             // send info to database from label1, label2 & label3
+            Response.Redirect("TextAlertRegistration.aspx");
         }
     }
 }
