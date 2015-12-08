@@ -156,10 +156,6 @@
   <ItemGroup>
     <Content Include="AddTokens.aspx" />
     <Content Include="AdminLogin.aspx" />
-    <Content Include="App_Data\Project_Database.mdf" />
-    <Content Include="App_Data\Project_Database_log.ldf">
-      <DependentUpon>Project_Database.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\SQL Statements.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
