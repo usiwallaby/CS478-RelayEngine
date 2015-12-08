@@ -60,8 +60,8 @@
             <asp:Button ID="Button2" runat="server" Text="Remove All" OnClick="Button2_Click" />
             <asp:Button ID="Button3" runat="server" Text="Cancel" OnClick="Button3_Click" />
             <br />
-            <a href="~/SendMessage.aspx">Sender</a>
-            <a href="~/AdminSignIn.aspx">Admin</a>
+            <a href="SendMessage.aspx">Sender</a>
+            <a href="AdminSignIn.aspx">Admin</a>
             <br />
         </asp:Panel>
     </form>
