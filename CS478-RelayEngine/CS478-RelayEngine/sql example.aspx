@@ -11,24 +11,20 @@
     <div>
     
     </div>
-        <asp:ListView ID="ListView1" runat="server" DataKeyNames="USER_ID" DataSourceID="SqlDataSource1" InsertItemPosition="LastItem">
+        <asp:ListView ID="ListView1" runat="server" DataKeyNames="USER_ID" DataSourceID="SqlDataSource1">
             <AlternatingItemTemplate>
                 <tr style="">
-                    <td>
-                        <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
-                        <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
-                    </td>
                     <td>
                         <asp:Label ID="USER_IDLabel" runat="server" Text='<%# Eval("USER_ID") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="USER_FNAMELabel" runat="server" Text='<%# Eval("USER_FNAME") %>' />
+                        <asp:Label ID="ADMIN_TOKENSLabel" runat="server" Text='<%# Eval("ADMIN_TOKENS") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="USER_LNAMELabel" runat="server" Text='<%# Eval("USER_LNAME") %>' />
+                        <asp:Label ID="ADMIN_LOGONAMELabel" runat="server" Text='<%# Eval("ADMIN_LOGONAME") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="USER_PHONELabel" runat="server" Text='<%# Eval("USER_PHONE") %>' />
+                        <asp:Label ID="ADMIN_SECURITYCODELabel" runat="server" Text='<%# Eval("ADMIN_SECURITYCODE") %>' />
                     </td>
                 </tr>
             </AlternatingItemTemplate>
@@ -42,13 +38,13 @@
                         <asp:Label ID="USER_IDLabel1" runat="server" Text='<%# Eval("USER_ID") %>' />
                     </td>
                     <td>
-                        <asp:TextBox ID="USER_FNAMETextBox" runat="server" Text='<%# Bind("USER_FNAME") %>' />
+                        <asp:TextBox ID="ADMIN_TOKENSTextBox" runat="server" Text='<%# Bind("ADMIN_TOKENS") %>' />
                     </td>
                     <td>
-                        <asp:TextBox ID="USER_LNAMETextBox" runat="server" Text='<%# Bind("USER_LNAME") %>' />
+                        <asp:TextBox ID="ADMIN_LOGONAMETextBox" runat="server" Text='<%# Bind("ADMIN_LOGONAME") %>' />
                     </td>
                     <td>
-                        <asp:TextBox ID="USER_PHONETextBox" runat="server" Text='<%# Bind("USER_PHONE") %>' />
+                        <asp:TextBox ID="ADMIN_SECURITYCODETextBox" runat="server" Text='<%# Bind("ADMIN_SECURITYCODE") %>' />
                     </td>
                 </tr>
             </EditItemTemplate>
@@ -69,33 +65,29 @@
                         <asp:TextBox ID="USER_IDTextBox" runat="server" Text='<%# Bind("USER_ID") %>' />
                     </td>
                     <td>
-                        <asp:TextBox ID="USER_FNAMETextBox" runat="server" Text='<%# Bind("USER_FNAME") %>' />
+                        <asp:TextBox ID="ADMIN_TOKENSTextBox" runat="server" Text='<%# Bind("ADMIN_TOKENS") %>' />
                     </td>
                     <td>
-                        <asp:TextBox ID="USER_LNAMETextBox" runat="server" Text='<%# Bind("USER_LNAME") %>' />
+                        <asp:TextBox ID="ADMIN_LOGONAMETextBox" runat="server" Text='<%# Bind("ADMIN_LOGONAME") %>' />
                     </td>
                     <td>
-                        <asp:TextBox ID="USER_PHONETextBox" runat="server" Text='<%# Bind("USER_PHONE") %>' />
+                        <asp:TextBox ID="ADMIN_SECURITYCODETextBox" runat="server" Text='<%# Bind("ADMIN_SECURITYCODE") %>' />
                     </td>
                 </tr>
             </InsertItemTemplate>
             <ItemTemplate>
                 <tr style="">
                     <td>
-                        <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
-                        <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
-                    </td>
-                    <td>
                         <asp:Label ID="USER_IDLabel" runat="server" Text='<%# Eval("USER_ID") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="USER_FNAMELabel" runat="server" Text='<%# Eval("USER_FNAME") %>' />
+                        <asp:Label ID="ADMIN_TOKENSLabel" runat="server" Text='<%# Eval("ADMIN_TOKENS") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="USER_LNAMELabel" runat="server" Text='<%# Eval("USER_LNAME") %>' />
+                        <asp:Label ID="ADMIN_LOGONAMELabel" runat="server" Text='<%# Eval("ADMIN_LOGONAME") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="USER_PHONELabel" runat="server" Text='<%# Eval("USER_PHONE") %>' />
+                        <asp:Label ID="ADMIN_SECURITYCODELabel" runat="server" Text='<%# Eval("ADMIN_SECURITYCODE") %>' />
                     </td>
                 </tr>
             </ItemTemplate>
@@ -105,11 +97,10 @@
                         <td runat="server">
                             <table id="itemPlaceholderContainer" runat="server" border="0" style="">
                                 <tr runat="server" style="">
-                                    <th runat="server"></th>
                                     <th runat="server">USER_ID</th>
-                                    <th runat="server">USER_FNAME</th>
-                                    <th runat="server">USER_LNAME</th>
-                                    <th runat="server">USER_PHONE</th>
+                                    <th runat="server">ADMIN_TOKENS</th>
+                                    <th runat="server">ADMIN_LOGONAME</th>
+                                    <th runat="server">ADMIN_SECURITYCODE</th>
                                 </tr>
                                 <tr id="itemPlaceholder" runat="server">
                                 </tr>
@@ -124,46 +115,21 @@
             <SelectedItemTemplate>
                 <tr style="">
                     <td>
-                        <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
-                        <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
-                    </td>
-                    <td>
                         <asp:Label ID="USER_IDLabel" runat="server" Text='<%# Eval("USER_ID") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="USER_FNAMELabel" runat="server" Text='<%# Eval("USER_FNAME") %>' />
+                        <asp:Label ID="ADMIN_TOKENSLabel" runat="server" Text='<%# Eval("ADMIN_TOKENS") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="USER_LNAMELabel" runat="server" Text='<%# Eval("USER_LNAME") %>' />
+                        <asp:Label ID="ADMIN_LOGONAMELabel" runat="server" Text='<%# Eval("ADMIN_LOGONAME") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="USER_PHONELabel" runat="server" Text='<%# Eval("USER_PHONE") %>' />
+                        <asp:Label ID="ADMIN_SECURITYCODELabel" runat="server" Text='<%# Eval("ADMIN_SECURITYCODE") %>' />
                     </td>
                 </tr>
             </SelectedItemTemplate>
         </asp:ListView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [USERS] WHERE [USER_ID] = @original_USER_ID AND [USER_FNAME] = @original_USER_FNAME AND [USER_LNAME] = @original_USER_LNAME AND [USER_PHONE] = @original_USER_PHONE" InsertCommand="INSERT INTO [USERS] ([USER_ID], [USER_FNAME], [USER_LNAME], [USER_PHONE]) VALUES (@USER_ID, @USER_FNAME, @USER_LNAME, @USER_PHONE)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT [USER_ID], [USER_FNAME], [USER_LNAME], [USER_PHONE] FROM [USERS]" UpdateCommand="UPDATE [USERS] SET [USER_FNAME] = @USER_FNAME, [USER_LNAME] = @USER_LNAME, [USER_PHONE] = @USER_PHONE WHERE [USER_ID] = @original_USER_ID AND [USER_FNAME] = @original_USER_FNAME AND [USER_LNAME] = @original_USER_LNAME AND [USER_PHONE] = @original_USER_PHONE">
-            <DeleteParameters>
-                <asp:Parameter Name="original_USER_ID" Type="Int32" />
-                <asp:Parameter Name="original_USER_FNAME" Type="String" />
-                <asp:Parameter Name="original_USER_LNAME" Type="String" />
-                <asp:Parameter Name="original_USER_PHONE" Type="String" />
-            </DeleteParameters>
-            <InsertParameters>
-                <asp:Parameter Name="USER_ID" Type="Int32" />
-                <asp:Parameter Name="USER_FNAME" Type="String" />
-                <asp:Parameter Name="USER_LNAME" Type="String" />
-                <asp:Parameter Name="USER_PHONE" Type="String" />
-            </InsertParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="USER_FNAME" Type="String" />
-                <asp:Parameter Name="USER_LNAME" Type="String" />
-                <asp:Parameter Name="USER_PHONE" Type="String" />
-                <asp:Parameter Name="original_USER_ID" Type="Int32" />
-                <asp:Parameter Name="original_USER_FNAME" Type="String" />
-                <asp:Parameter Name="original_USER_LNAME" Type="String" />
-                <asp:Parameter Name="original_USER_PHONE" Type="String" />
-            </UpdateParameters>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Project Database VS2012 Connection %>" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [ADMINISTRATOR]">
         </asp:SqlDataSource>
     </form>
 </body>

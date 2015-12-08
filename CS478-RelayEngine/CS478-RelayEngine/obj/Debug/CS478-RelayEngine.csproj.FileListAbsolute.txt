@@ -10,7 +10,6 @@ E:\Desktop\school\8.2015 Fall\Software Developement\CS478-RelayEngine\CS478-Rela
 E:\Desktop\school\8.2015 Fall\Software Developement\CS478-RelayEngine\CS478-RelayEngine\CS478-RelayEngine\bin\roslyn\vbc.exe
 E:\Desktop\school\8.2015 Fall\Software Developement\CS478-RelayEngine\CS478-RelayEngine\CS478-RelayEngine\bin\roslyn\VBCSCompiler.exe
 E:\Desktop\school\8.2015 Fall\Software Developement\CS478-RelayEngine\CS478-RelayEngine\CS478-RelayEngine\bin\roslyn\VBCSCompiler.exe.config
-E:\Desktop\school\8.2015 Fall\Software Developement\CS478-RelayEngine\CS478-RelayEngine\CS478-RelayEngine\bin\CS478-RelayEngine.dll.config
 E:\Desktop\school\8.2015 Fall\Software Developement\CS478-RelayEngine\CS478-RelayEngine\CS478-RelayEngine\bin\CS478-RelayEngine.dll
 E:\Desktop\school\8.2015 Fall\Software Developement\CS478-RelayEngine\CS478-RelayEngine\CS478-RelayEngine\bin\CS478-RelayEngine.pdb
 E:\Desktop\school\8.2015 Fall\Software Developement\CS478-RelayEngine\CS478-RelayEngine\CS478-RelayEngine\bin\Antlr3.Runtime.dll
