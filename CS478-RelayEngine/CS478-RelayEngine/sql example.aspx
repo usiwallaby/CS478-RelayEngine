@@ -129,8 +129,7 @@
                 </tr>
             </SelectedItemTemplate>
         </asp:ListView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Project Database VS2012 Connection %>" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [ADMINISTRATOR]">
-        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\EvansvilleDaySchoolDatabase.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [ADMINISTRATOR]"></asp:SqlDataSource>
     </form>
 </body>
 </html>
