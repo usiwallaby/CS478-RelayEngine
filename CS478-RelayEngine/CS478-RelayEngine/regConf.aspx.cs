@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,21 +19,18 @@ namespace CS478_RelayEngine
             Label5.Text = Session["lastCell"].ToString();
             Label2.Text = Session["firstName"].ToString();
             Label3.Text = Session["lastName"].ToString();
+            Label6.Text = Session["lists"].ToString();
+            //Label1.Text = "812";
+            //Label2.Text = "Jane";
+            //Label3.Text = "Doe";
+            //Label4.Text = "555";
+            //Label5.Text = "5555";
 
-            //if (Page.PreviousPage != null)
-            //{
-            //    TextBox SourceTextBox =
-            //        (TextBox)Page.PreviousPage.FindControl("cellphone");
-            //    if (SourceTextBox != null)
-            //    {
-            //        Label1.Text = SourceTextBox.Text;
-            //    }
-            //}
         }
 
         private void Load_Logo()
         {
-            string connectionstring = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\EvansvilleDaySchoolDatabase.mdf;Integrated Security=True";
+            string connectionstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             string selectstring = "SELECT ADMIN_LOGONAME FROM ADMINISTRATOR WHERE USER_ID = 0";
 
             SqlDataSource database = new SqlDataSource(connectionstring, selectstring);
@@ -48,7 +45,7 @@ namespace CS478_RelayEngine
             {
                 LogoImage.ImageUrl = "~/Content/" + "evansville_day_school.jpg";
 
-                string connstring = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Project_Database.mdf;Integrated Security=True";
+                string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
                 string selstring = "SELECT * FROM ADMINISTRATOR WHERE USER_ID = 0";
                 string updatestring = "UPDATE ADMINISTRATOR SET ADMIN_LOGONAME = 'evansville_day_school.jpg' WHERE USER_ID = 0";
                 SqlDataSource db = new SqlDataSource(connstring, selstring);
@@ -66,8 +63,55 @@ namespace CS478_RelayEngine
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            // send info to database from label1, label2 & label3
+            string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            string selstring = "SELECT * FROM SUBSCRIPTION JOIN USERS ON USERS.USER_ID = SUBSCRIPTION.USER_ID JOIN LIST ON SUBSCRIPTION.LIST_ID =  LIST.LIST_ID";
+            string insertstring = "INSERT INTO USERS VALUES (@fName, @lName @phone)";
+            SqlDataSource db = new SqlDataSource(connstring, selstring);
+            DataView dv = (DataView)db.Select(DataSourceSelectArguments.Empty);
+            string FirstName = (string)dv.Table.Rows[0][4];
+            string LastName = (string)dv.Table.Rows[0][5];
+            string Phone = (string)dv.Table.Rows[0][6];
+            int userID = (int)dv.Table.Rows[0][0];
+            string updatestring = String.Format("UPDATE USERS SET USER_FNAME={0}Label2.Text, USER_LNAME={1}Label3.Text, USER_PHONE={2}Label1.Text+Label4.Text+Label5.Text WHERE USER_ID={3};"), fname, lname, phone, userid;
+            db.UpdateCommand = updatestring;
+            db.InsertCommand = insertstring;
+            db.UpdateParameters.Add("@fName", Label2.Text);
+            db.UpdateParameters.Add("@lName", Label3.Text);
+            db.UpdateParameters.Add("@phone", Label1.Text + Label4.Text + Label5.Text);
+                   
+
+
+            if (FirstName == Label2.Text && LastName == Label3.Text) 
+            {
+                string firstUpdateString = String.Format("UPDATE USERS SET USER_FNAME={0}Label2.Text, USER_LNAME={1}Label3.Text, USER_PHONE={2}Label1.Text+Label4.Text+Label5.Text WHERE USER_ID={3};", fname, lname, phone, userid);
+                db.UpdateCommand = updatestring;
+                db.Update();
+            }
+            else
+            {
+                db.InsertParameters.Add("@fName", Label2.Text);
+                db.InsertParameters.Add("@lName", Label3.Text);
+                db.InsertParameters.Add("@phone", Label1.Text + Label4.Text + Label5.Text);
+                db.Insert();
+                insertstring = "INSERT INTO SUBSCRIPTION VALUES (@lists)";
+                db.InsertCommand = insertstring;
+                db.InsertParameters.Add("@lists", Label6.Text);
+                db.Insert();
+            }
+
+
+
+
+
+            // send info to database
+            // Label1.Text+Label4.Text+Label5.Text is the cell number
+            // Label2.Text is the first name
+            // Label3.Text is the last name
+            // Label6.Text is a string containing all the subscribed lists from previous page separated by /s
+            
+
             Response.Redirect("TextAlertRegistration.aspx");
+
         }
     }
 }
