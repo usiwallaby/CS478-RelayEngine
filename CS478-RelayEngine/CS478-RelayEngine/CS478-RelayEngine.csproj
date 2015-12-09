@@ -156,10 +156,6 @@
   <ItemGroup>
     <Content Include="AddTokens.aspx" />
     <Content Include="AdminLogin.aspx" />
-    <Content Include="App_Data\EvansvilleDaySchoolDatabase.mdf" />
-    <Content Include="App_Data\EvansvilleDaySchoolDatabase_log.ldf">
-      <DependentUpon>EvansvilleDaySchoolDatabase.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\SQL Statements.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

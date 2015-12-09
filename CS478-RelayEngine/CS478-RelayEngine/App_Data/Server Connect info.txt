@@ -1,0 +1,8 @@
+server type - database engine
+server name - evansvilledayschoolserver.database.windows.net
+authentication - sql server authentication
+	login - Usiwallabies
+	password - Quokka12
+	
+New connection string - 
+Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;

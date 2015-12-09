@@ -14,7 +14,7 @@ namespace CS478_RelayEngine
 
         private void Load_Logo()
         {
-            string connectionstring = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\EvansvilleDaySchoolDatabase.mdf;Integrated Security=True";
+            string connectionstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             string selectstring = "SELECT ADMIN_LOGONAME FROM ADMINISTRATOR WHERE USER_ID = 0";
 
             SqlDataSource database = new SqlDataSource(connectionstring, selectstring);
@@ -29,7 +29,7 @@ namespace CS478_RelayEngine
             {
                 LogoImage.ImageUrl = "~/Content/" + "evansville_day_school.jpg";
 
-                string connstring = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Project_Database.mdf;Integrated Security=True";
+                string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
                 string selstring = "SELECT * FROM ADMINISTRATOR WHERE USER_ID = 0";
                 string updatestring = "UPDATE ADMINISTRATOR SET ADMIN_LOGONAME = 'evansville_day_school.jpg' WHERE USER_ID = 0";
                 SqlDataSource db = new SqlDataSource(connstring, selstring);
@@ -49,7 +49,7 @@ namespace CS478_RelayEngine
         {
             string filename = FileUpload1.FileName;
 
-            string connstring = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Project_Database.mdf;Integrated Security=True";
+            string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             string selstring = "SELECT * FROM ADMINISTRATOR WHERE USER_ID = 0";
             string updatestring = string.Format("UPDATE ADMINISTRATOR SET ADMIN_LOGONAME = '{0}' WHERE USER_ID = 0", filename);
             SqlDataSource db = new SqlDataSource(connstring, selstring);
