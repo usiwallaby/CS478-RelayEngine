@@ -9,7 +9,7 @@ namespace CS478_RelayEngine
 {
     public partial class text_message_page : System.Web.UI.Page
     {
-        public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Shane\\Documents\\CS478-RelayEngine\\CS478-RelayEngine\\CS478-RelayEngine\\App_Data\\Project_Database.mdf;Integrated Security=True";
+        public static string connectionString = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         public static string testSender = "egestas@mus.com";
         int list_id;
         int tokens;
