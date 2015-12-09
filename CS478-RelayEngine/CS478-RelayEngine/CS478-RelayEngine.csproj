@@ -301,12 +301,14 @@
     <Compile Include="Startup.cs" />
     <Compile Include="text-message-confirmation.aspx.cs">
       <DependentUpon>text-message-confirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="text-message-confirmation.aspx.designer.cs">
       <DependentUpon>text-message-confirmation.aspx</DependentUpon>
     </Compile>
     <Compile Include="text-message-page.aspx.cs">
       <DependentUpon>text-message-page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="text-message-page.aspx.designer.cs">
       <DependentUpon>text-message-page.aspx</DependentUpon>

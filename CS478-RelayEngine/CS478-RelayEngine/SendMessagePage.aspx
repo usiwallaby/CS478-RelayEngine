@@ -15,6 +15,10 @@
     <form id="form1" runat="server">
     <div class="auto-style1">
     
+        <asp:Panel ID="Panel1" runat="server">
+            <asp:Image ID="LogoImage" runat="server" ImageUrl="~/Content/evansville_day_school.jpg" />
+        </asp:Panel>
+    
         <br />
         Email Address&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="TextBox1" runat="server" Width="300px"></asp:TextBox>

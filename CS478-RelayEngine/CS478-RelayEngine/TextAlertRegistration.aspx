@@ -18,8 +18,8 @@
     <div>
     
         <asp:Panel ID="Panel1" runat="server" style="text-align: center">
-            <img alt="" class="auto-style1" src="evansville_day_school.jpg" />
-            <br />
+            <asp:Image ID="LogoImage" runat="server" ImageUrl="~/Content/evansville_day_school.jpg" />
+            &nbsp;<br />
             <br />
             Select each list for which you wish to receive alerts. You may select more than one list.<br />
             <br />

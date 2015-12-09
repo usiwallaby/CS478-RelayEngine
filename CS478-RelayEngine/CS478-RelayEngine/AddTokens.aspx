@@ -25,17 +25,13 @@
             text-align: left;
             width: 86px;
         }
-        .auto-style7 {
-            width: 381px;
-            height: 118px;
-        }
-    </style>
+        </style>
 </head>
 <body style="text-align: center">
     <form id="form1" runat="server">
     <div>
     
-        <asp:Image ID="Image1" runat="server" class="auto-style7" ImageUrl="evansville_day_school.jpg" />
+            <asp:Image ID="LogoImage" runat="server" ImageUrl="~/Content/evansville_day_school.jpg" />
         <br />
         <br />
         Tokens:&nbsp;&nbsp;&nbsp;&nbsp;

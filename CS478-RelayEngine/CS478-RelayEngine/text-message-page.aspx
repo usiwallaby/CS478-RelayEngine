@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="text_message_page.aspx.cs" Inherits="CS478_RelayEngine.text_message_page" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="text-message-page.aspx.cs" Inherits="CS478_RelayEngine.text_message_page" %>
 
 <!DOCTYPE html>
 
@@ -11,7 +11,8 @@
         
     <div style="width: 960px">
     
-        <img class="irc_mi" height="67" src="https://upload.wikimedia.org/wikipedia/en/thumb/9/99/EDS_wordmark.png/225px-EDS_wordmark.png" style="" width="225" /><br />
+            <asp:Image ID="LogoImage" runat="server" ImageUrl="~/Content/evansville_day_school.jpg" />
+            <br />
     
         <asp:Label ID="Label1" runat="server" Text="User:"></asp:Label>
         &nbsp;&nbsp;<asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>

@@ -12,17 +12,13 @@
         .auto-style2 {
             margin-left: 0px;
         }
-        .auto-style3 {
-            width: 381px;
-            height: 118px;
-        }
-    </style>
+        </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div style="text-align: center">
     
-        <asp:Image ID="Image1" runat="server" class="auto-style3" ImageUrl="~/evansville_day_school.jpg" />
+            <asp:Image ID="LogoImage" runat="server" ImageUrl="~/Content/evansville_day_school.jpg" />
         <br />
         <br />
         <br />
