@@ -154,6 +154,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AccountInformationPage.aspx" />
     <Content Include="AddTokens.aspx" />
     <Content Include="AdminLogin.aspx" />
     <Content Include="App_Data\SQL Statements.txt" />
@@ -222,6 +223,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountInformationPage.aspx.cs">
+      <DependentUpon>AccountInformationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccountInformationPage.aspx.designer.cs">
+      <DependentUpon>AccountInformationPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddTokens.aspx.cs">
       <DependentUpon>AddTokens.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -26,6 +26,12 @@
                     <td>
                         <asp:Label ID="ADMIN_SECURITYCODELabel" runat="server" Text='<%# Eval("ADMIN_SECURITYCODE") %>' />
                     </td>
+                    <td>
+                        <asp:Label ID="ADMIN_USERNAMELabel" runat="server" Text='<%# Eval("ADMIN_USERNAME") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="ADMIN_PASSWORDLabel" runat="server" Text='<%# Eval("ADMIN_PASSWORD") %>' />
+                    </td>
                 </tr>
             </AlternatingItemTemplate>
             <EditItemTemplate>
@@ -45,6 +51,12 @@
                     </td>
                     <td>
                         <asp:TextBox ID="ADMIN_SECURITYCODETextBox" runat="server" Text='<%# Bind("ADMIN_SECURITYCODE") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="ADMIN_USERNAMETextBox" runat="server" Text='<%# Bind("ADMIN_USERNAME") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="ADMIN_PASSWORDTextBox" runat="server" Text='<%# Bind("ADMIN_PASSWORD") %>' />
                     </td>
                 </tr>
             </EditItemTemplate>
@@ -73,6 +85,12 @@
                     <td>
                         <asp:TextBox ID="ADMIN_SECURITYCODETextBox" runat="server" Text='<%# Bind("ADMIN_SECURITYCODE") %>' />
                     </td>
+                    <td>
+                        <asp:TextBox ID="ADMIN_USERNAMETextBox" runat="server" Text='<%# Bind("ADMIN_USERNAME") %>' />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="ADMIN_PASSWORDTextBox" runat="server" Text='<%# Bind("ADMIN_PASSWORD") %>' />
+                    </td>
                 </tr>
             </InsertItemTemplate>
             <ItemTemplate>
@@ -89,6 +107,12 @@
                     <td>
                         <asp:Label ID="ADMIN_SECURITYCODELabel" runat="server" Text='<%# Eval("ADMIN_SECURITYCODE") %>' />
                     </td>
+                    <td>
+                        <asp:Label ID="ADMIN_USERNAMELabel" runat="server" Text='<%# Eval("ADMIN_USERNAME") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="ADMIN_PASSWORDLabel" runat="server" Text='<%# Eval("ADMIN_PASSWORD") %>' />
+                    </td>
                 </tr>
             </ItemTemplate>
             <LayoutTemplate>
@@ -101,6 +125,8 @@
                                     <th runat="server">ADMIN_TOKENS</th>
                                     <th runat="server">ADMIN_LOGONAME</th>
                                     <th runat="server">ADMIN_SECURITYCODE</th>
+                                    <th runat="server">ADMIN_USERNAME</th>
+                                    <th runat="server">ADMIN_PASSWORD</th>
                                 </tr>
                                 <tr id="itemPlaceholder" runat="server">
                                 </tr>
@@ -126,10 +152,16 @@
                     <td>
                         <asp:Label ID="ADMIN_SECURITYCODELabel" runat="server" Text='<%# Eval("ADMIN_SECURITYCODE") %>' />
                     </td>
+                    <td>
+                        <asp:Label ID="ADMIN_USERNAMELabel" runat="server" Text='<%# Eval("ADMIN_USERNAME") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="ADMIN_PASSWORDLabel" runat="server" Text='<%# Eval("ADMIN_PASSWORD") %>' />
+                    </td>
                 </tr>
             </SelectedItemTemplate>
         </asp:ListView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\EvansvilleDaySchoolDatabase.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [ADMINISTRATOR]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=evansvilledayschoolserver.database.windows.net;Initial Catalog=EvansvilleDaySchoolDatabase;Persist Security Info=True;User ID=Usiwallabies;Password=Quokka12" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [ADMINISTRATOR]"></asp:SqlDataSource>
     </form>
 </body>
 </html>

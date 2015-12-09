@@ -1,4 +1,4 @@
-server type - database engine
+server type - sql database server
 server name - evansvilledayschoolserver.database.windows.net
 authentication - sql server authentication
 	login - Usiwallabies
