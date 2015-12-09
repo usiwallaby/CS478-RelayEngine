@@ -37,6 +37,7 @@ FOREIGN KEY (LIST_ID) REFERENCES LIST(LIST_ID)
 CREATE TABLE SENDER(
 SENDER_ID INT UNIQUE NOT NULL,
 SENDER_EMAIL VARCHAR(30) NOT NULL,
+SENDER_PASSWORD VARCHAR(20) NOT NULL,
 
 PRIMARY KEY (SENDER_ID)
 );
@@ -63,8 +64,8 @@ INSERT INTO SUBSCRIPTION(SUB_ID,USER_ID,LIST_ID)
 VALUES (0,1,1),(1,2,0),(2,3,3),(3,4,0),(4,5,2),(5,6,4),(6,7,3),(7,8,1),(8,9,2),(9,10,3),(10,11,0),(11,12,3),(12,13,2),(13,14,3),(14,15,2),(15,16,1),(16,17,0),(17,18,4),(18,19,0),(19,20,2)
 ;
 
-INSERT INTO SENDER(SENDER_ID,SENDER_EMAIL)
-VALUES (0,'euismod.et.commodo@infelis.com'),(1,'at.arcu@faucibusorciluctus.com'),(2,'egestas@mus.com'),(3,'enim@ornareegestas.net'),(4,'Maecenas.libero.est@metus.org')
+INSERT INTO SENDER(SENDER_ID,SENDER_EMAIL,SENDER_PASSWORD)
+VALUES (0,'euismod.et.commodo@infelis.com','YOURA'),(1,'at.arcu@faucibusorciluctus.com','BIG'),(2,'egestas@mus.com','GUY'),(3,'enim@ornareegestas.net','FOR'),(4,'Maecenas.libero.est@metus.org','YOU')
 ;
 
 INSERT INTO AUTHORIZATIONS(AUTH_ID,LIST_ID,SENDER_ID)
