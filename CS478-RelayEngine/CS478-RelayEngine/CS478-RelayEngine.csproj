@@ -207,8 +207,13 @@
     <Content Include="SendMessagePage.aspx" />
     <Content Include="Site.Master" />
     <Content Include="sql example.aspx" />
+<<<<<<< HEAD
     <Content Include="TextAlertRegistration.aspx" />
     <Content Include="Update Logo Page.aspx" />
+=======
+    <Content Include="text-message-confirmation.aspx" />
+    <Content Include="text-message-page.aspx" />
+>>>>>>> refs/remotes/origin/text-message-page
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -297,6 +302,7 @@
       <DependentUpon>sql example.aspx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+<<<<<<< HEAD
     <Compile Include="TextAlertRegistration.aspx.cs">
       <DependentUpon>TextAlertRegistration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -310,6 +316,21 @@
     </Compile>
     <Compile Include="Update Logo Page.aspx.designer.cs">
       <DependentUpon>Update Logo Page.aspx</DependentUpon>
+=======
+    <Compile Include="text-message-confirmation.aspx.cs">
+      <DependentUpon>text-message-confirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="text-message-confirmation.aspx.designer.cs">
+      <DependentUpon>text-message-confirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="text-message-page.aspx.cs">
+      <DependentUpon>text-message-page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="text-message-page.aspx.designer.cs">
+      <DependentUpon>text-message-page.aspx</DependentUpon>
+>>>>>>> refs/remotes/origin/text-message-page
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
