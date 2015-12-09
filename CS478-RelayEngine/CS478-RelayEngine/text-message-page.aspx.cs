@@ -19,74 +19,76 @@ namespace CS478_RelayEngine
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Load_Logo();
-
-            Label5.Text = testSender;
-
-            SqlDataReader dr = null;
-
-            using (SqlConnection con = new SqlConnection(connectionString))
+            if (!this.IsPostBack)
             {
-                con.Open();
-                String commandText = "SELECT LIST_ID FROM LIST WHERE LIST_ID IN (SELECT LIST_ID FROM AUTHORIZATIONS WHERE SENDER_ID IN (SELECT SENDER_ID FROM SENDER WHERE SENDER_EMAIL='egestas@mus.com'));";
+                Load_Logo();
+                Label5.Text = testSender;
 
-                using (SqlCommand cmd = new SqlCommand(commandText, con))
+                SqlDataReader dr = null;
+
+                using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    dr = cmd.ExecuteReader();
-                    while (dr.Read())
+                    con.Open();
+                    String commandText = "SELECT LIST_ID FROM LIST WHERE LIST_ID IN (SELECT LIST_ID FROM AUTHORIZATIONS WHERE SENDER_ID IN (SELECT SENDER_ID FROM SENDER WHERE SENDER_EMAIL='egestas@mus.com'));";
+
+                    using (SqlCommand cmd = new SqlCommand(commandText, con))
                     {
-                        list_id = dr.GetInt32(0);
-                        checkLists();
+                        dr = cmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            list_id = dr.GetInt32(0);
+                            checkLists();
+                        }
+                        dr.Close();
                     }
-                    dr.Close();
+
                 }
 
-            }
-
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                String commandText = "SELECT LIST_ID FROM SUBSCRIPTION;";
-
-                using (SqlCommand cmd = new SqlCommand(commandText, con))
+                using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    dr = cmd.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        int id = dr.GetInt32(0);
+                    con.Open();
+                    String commandText = "SELECT LIST_ID FROM SUBSCRIPTION;";
 
-                        if (id == 0) sub_one++;
-                        else if (id == 1) sub_two++;
-                        else if (id == 2) sub_two++;
-                        else if (id == 3) sub_three++;
-                        else if (id == 4) sub_four++;
+                    using (SqlCommand cmd = new SqlCommand(commandText, con))
+                    {
+                        dr = cmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            int id = dr.GetInt32(0);
+
+                            if (id == 0) sub_one++;
+                            else if (id == 1) sub_two++;
+                            else if (id == 2) sub_two++;
+                            else if (id == 3) sub_three++;
+                            else if (id == 4) sub_four++;
+                        }
                     }
                 }
-            }
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                String commandText = "SELECT ADMIN_TOKENS FROM ADMINISTRATOR;";
-
-                using (SqlCommand cmd = new SqlCommand(commandText, con))
+                using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    dr = cmd.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        tokens = dr.GetInt32(0);
-                        Label6.Text = tokens.ToString();
-                        checkTokens();
-                    }
-                    dr.Close();
-                }
-            }
+                    con.Open();
+                    String commandText = "SELECT ADMIN_TOKENS FROM ADMINISTRATOR;";
 
-            CheckBox1.Text = "School Cancellation/Delays (" + sub_one.ToString() + " recipients)";
-            CheckBox2.Text = "Upper School Sports (" + sub_two.ToString() + " recipients)";
-            CheckBox3.Text = "Lower School Sports (" + sub_three.ToString() + " recipients)";
-            CheckBox4.Text = "Upper School Announcements (" + sub_four.ToString() + " recipients)";
-            CheckBox5.Text = "Lower School Announcements (" + sub_five.ToString() + " recipients)";
+                    using (SqlCommand cmd = new SqlCommand(commandText, con))
+                    {
+                        dr = cmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            tokens = dr.GetInt32(0);
+                            Label6.Text = tokens.ToString();
+                            checkTokens();
+                        }
+                        dr.Close();
+                    }
+                }
+
+                CheckBox1.Text = "School Cancellation/Delays (" + sub_one.ToString() + " recipients)";
+                CheckBox2.Text = "Upper School Sports (" + sub_two.ToString() + " recipients)";
+                CheckBox3.Text = "Lower School Sports (" + sub_three.ToString() + " recipients)";
+                CheckBox4.Text = "Upper School Announcements (" + sub_four.ToString() + " recipients)";
+                CheckBox5.Text = "Lower School Announcements (" + sub_five.ToString() + " recipients)";
+            }
         }
 
         private void Load_Logo()
@@ -197,7 +199,7 @@ namespace CS478_RelayEngine
         }
         protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
-            Label7.Text = "Message (160 Characters Max)   " + TextBox1.Text.Length + "/160";
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -207,7 +209,7 @@ namespace CS478_RelayEngine
                 Label8.Text = "Unable to send message: your message contains too many characters.";
                 Label8.Visible = true;
             }
-            else if (TextBox1.Text.Length == 0)
+            else if (TextBox1.Text == "")
             {
                 Label8.Text = "Unable to send message: message is blank.";
                 Label8.Visible = true;
