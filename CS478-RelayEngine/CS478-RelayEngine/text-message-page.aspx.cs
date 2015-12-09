@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Data.Sql;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace CS478_RelayEngine
 {
@@ -17,24 +12,7 @@ namespace CS478_RelayEngine
         int tokens;
         int sub_one = 0, sub_two = 0, sub_three = 0, sub_four = 0, sub_five = 0;
         int recipients = 0;
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                if (CheckBox1.Checked == true) recipients = sub_one;
-                else if (CheckBox2.Checked == true) recipients = sub_two;
-                else if (CheckBox3.Checked == true) recipients = sub_three;
-                else if (CheckBox4.Checked == true) recipients = sub_four;
-                else if (CheckBox5.Checked == true) recipients = sub_five;
-
-                con.Open();
-                String commandText = "UPDATE ADMINISTRATOR SET ADMIN_TOKENS=ADMIN_TOKENS-" + recipients.ToString() + ";";
-
-                SqlCommand cmd = new SqlCommand(commandText, con);
-                cmd.ExecuteReader();
-            }
-        }
+        List<int> subs = new List<int>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -71,6 +49,7 @@ namespace CS478_RelayEngine
                     while (dr.Read())
                     {
                         int id = dr.GetInt32(0);
+
                         if (id == 0) sub_one++;
                         else if (id == 1) sub_two++;
                         else if (id == 2) sub_two++;
@@ -91,17 +70,18 @@ namespace CS478_RelayEngine
                     while (dr.Read())
                     {
                         tokens = dr.GetInt32(0);
+                        Label6.Text = tokens.ToString();
                         checkTokens();
                     }
                     dr.Close();
                 }
             }
 
-            CheckBox1.Text = CheckBox1.Text + " (" + sub_one.ToString() + " recipients)";
-            CheckBox2.Text = CheckBox2.Text + " (" + sub_two.ToString() + " recipients)";
-            CheckBox3.Text = CheckBox3.Text + " (" + sub_three.ToString() + " recipients)";
-            CheckBox4.Text = CheckBox4.Text + " (" + sub_four.ToString() + " recipients)";
-            CheckBox5.Text = CheckBox5.Text + " (" + sub_five.ToString() + " recipients)";
+            CheckBox1.Text = "School Cancellation/Delays (" + sub_one.ToString() + " recipients)";
+            CheckBox2.Text = "Upper School Sports (" + sub_two.ToString() + " recipients)";
+            CheckBox3.Text = "Lower School Sports (" + sub_three.ToString() + " recipients)";
+            CheckBox4.Text = "Upper School Announcements (" + sub_four.ToString() + " recipients)";
+            CheckBox5.Text = "Lower School Announcements (" + sub_five.ToString() + " recipients)";
         }
 
         public void checkLists()
@@ -149,7 +129,82 @@ namespace CS478_RelayEngine
 
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
+            CheckBox2.Checked = false;
+            CheckBox3.Checked = false;
+            CheckBox4.Checked = false;
+            CheckBox5.Checked = false;
+        }
+        protected void CheckBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox1.Checked = false;
+            CheckBox3.Checked = false;
+            CheckBox4.Checked = false;
+            CheckBox5.Checked = false;
+        }
+        protected void CheckBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox1.Checked = false;
+            CheckBox2.Checked = false;
+            CheckBox4.Checked = false;
+            CheckBox5.Checked = false;
+        }
+        protected void CheckBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox1.Checked = false;
+            CheckBox3.Checked = false;
+            CheckBox2.Checked = false;
+            CheckBox5.Checked = false;
+        }
+        protected void CheckBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox1.Checked = false;
+            CheckBox3.Checked = false;
+            CheckBox4.Checked = false;
+            CheckBox2.Checked = false;
+        }
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            Label7.Text = "Message (160 Characters Max)   " + TextBox1.Text.Length + "/160";
+        }
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (TextBox1.Text.Length > 160)
+            {
+                Label8.Text = "Unable to send message: your message contains too many characters.";
+                Label8.Visible = true;
+            }
+            else if (TextBox1.Text.Length == 0)
+            {
+                Label8.Text = "Unable to send message: message is blank.";
+                Label8.Visible = true;
+            }
+            else if (CheckBox1.Checked == false && CheckBox2.Checked == false && CheckBox3.Checked == false
+                && CheckBox4.Checked == false && CheckBox5.Checked == false)
+            {
+                Label8.Text = "Unable to send message: you did not select a list.";
+                Label8.Visible = true;
+            }
+            else
+            {
+                if (CheckBox1.Checked == true) recipients = sub_one;
+                else if (CheckBox2.Checked == true) recipients = sub_two;
+                else if (CheckBox3.Checked == true) recipients = sub_three;
+                else if (CheckBox4.Checked == true) recipients = sub_four;
+                else if (CheckBox5.Checked == true) recipients = sub_five;
+
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    String commandText = "UPDATE ADMINISTRATOR SET ADMIN_TOKENS=ADMIN_TOKENS-" + recipients.ToString() + ";";
+
+                    SqlCommand cmd = new SqlCommand(commandText, con);
+                    cmd.ExecuteReader();
+                }
+
+
+                Response.Redirect("text-message-confirmation.aspx");
+            }
         }
     }
 }

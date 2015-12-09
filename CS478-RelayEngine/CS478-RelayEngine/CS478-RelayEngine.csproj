@@ -219,6 +219,7 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="sql example.aspx" />
+    <Content Include="text-message-confirmation.aspx" />
     <Content Include="text-message-page.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -392,6 +393,13 @@
       <DependentUpon>sql example.aspx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="text-message-confirmation.aspx.cs">
+      <DependentUpon>text-message-confirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="text-message-confirmation.aspx.designer.cs">
+      <DependentUpon>text-message-confirmation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="text-message-page.aspx.cs">
       <DependentUpon>text-message-page.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

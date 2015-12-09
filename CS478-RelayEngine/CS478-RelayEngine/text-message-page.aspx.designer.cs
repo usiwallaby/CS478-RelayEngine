@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CS478_RelayEngine
-{
-
-
-    public partial class text_message_page
-    {
-
+namespace CS478_RelayEngine {
+    
+    
+    public partial class text_message_page {
+        
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace CS478_RelayEngine
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
         /// <summary>
         /// Label1 control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace CS478_RelayEngine
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-
+        
         /// <summary>
         /// Label5 control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace CS478_RelayEngine
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label5;
-
+        
         /// <summary>
         /// Label3 control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace CS478_RelayEngine
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
-
+        
         /// <summary>
         /// Label6 control.
         /// </summary>
@@ -58,7 +56,7 @@ namespace CS478_RelayEngine
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label6;
-
+        
         /// <summary>
         /// Label4 control.
         /// </summary>
@@ -67,7 +65,7 @@ namespace CS478_RelayEngine
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label4;
-
+        
         /// <summary>
         /// CheckBox1 control.
         /// </summary>
@@ -76,7 +74,7 @@ namespace CS478_RelayEngine
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
-
+        
         /// <summary>
         /// CheckBox2 control.
         /// </summary>
@@ -85,7 +83,7 @@ namespace CS478_RelayEngine
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
-
+        
         /// <summary>
         /// CheckBox3 control.
         /// </summary>
@@ -94,7 +92,7 @@ namespace CS478_RelayEngine
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox3;
-
+        
         /// <summary>
         /// CheckBox4 control.
         /// </summary>
@@ -103,7 +101,7 @@ namespace CS478_RelayEngine
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox4;
-
+        
         /// <summary>
         /// CheckBox5 control.
         /// </summary>
@@ -112,7 +110,34 @@ namespace CS478_RelayEngine
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox5;
-
+        
+        /// <summary>
+        /// Label7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label7;
+        
+        /// <summary>
+        /// TextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        
+        /// <summary>
+        /// Label8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label8;
+        
         /// <summary>
         /// Button1 control.
         /// </summary>
@@ -121,7 +146,7 @@ namespace CS478_RelayEngine
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-
+        
         /// <summary>
         /// Button2 control.
         /// </summary>
