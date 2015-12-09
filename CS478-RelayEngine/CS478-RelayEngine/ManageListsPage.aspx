@@ -35,9 +35,12 @@
         <p style="text-align: left">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Current Lists&nbsp;</p>
         <p style="text-align: center">
-            <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
-            </asp:ListView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2">
+                <Columns>
+                    <asp:BoundField DataField="LIST_NAME" HeaderText="LIST_NAME" SortExpression="LIST_NAME" />
+                    <asp:ButtonField ButtonType="Button" CommandName="Delete" HeaderText="Manage" ShowHeader="True" Text="Delete" />
+                </Columns>
+            </asp:GridView>
         </p>
         <p style="text-align: left">
             <asp:Button ID="Button2" runat="server" Text="Delete" Width="67px" CssClass="auto-style2" />
