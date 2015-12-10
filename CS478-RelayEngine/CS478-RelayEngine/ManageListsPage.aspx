@@ -35,10 +35,11 @@
         <p style="text-align: left">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Current Lists&nbsp;</p>
         <p style="text-align: center">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
                 <Columns>
                     <asp:BoundField DataField="LIST_NAME" HeaderText="LIST_NAME" SortExpression="LIST_NAME" />
-                    <asp:ButtonField ButtonType="Button" CommandName="Delete" HeaderText="Manage" ShowHeader="True" Text="Delete" />
+                    <asp:HyperLinkField HeaderText="Manage" NavigateUrl="ManageListPage.aspx" Text="Manage" />
+                    <asp:ButtonField ButtonType="Button" CommandName="Delete" HeaderText="Delete" ShowHeader="True" Text="Delete" />
                 </Columns>
             </asp:GridView>
         </p>
