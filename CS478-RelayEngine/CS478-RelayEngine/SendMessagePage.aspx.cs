@@ -27,11 +27,11 @@ namespace CS478_RelayEngine
 
             if (System.IO.File.Exists(Server.MapPath("~/Content/") + filename) == true)
             {
-                LogoImage0.ImageUrl = "~/Content/" + filename;
+                LogoImage.ImageUrl = "~/Content/" + filename;
             }
             else
             {
-                LogoImage0.ImageUrl = "~/Content/" + "evansville_day_school.jpg";
+                LogoImage.ImageUrl = "~/Content/" + "evansville_day_school.jpg";
 
                 string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
                 string selstring = "SELECT * FROM ADMINISTRATOR WHERE USER_ID = 0";
