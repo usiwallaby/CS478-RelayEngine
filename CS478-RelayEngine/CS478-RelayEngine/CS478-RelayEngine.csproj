@@ -167,9 +167,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="WebForm1.aspx" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="ManageListPage.aspx" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="ManageSenders.aspx" />
     <Content Include="Organization Security Code Page.aspx" />
     <Content Include="OrganizationManagement.aspx" />
@@ -254,13 +253,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="ManageListPage.aspx.cs">
-      <DependentUpon>ManageListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ManageListPage.aspx.designer.cs">
-      <DependentUpon>ManageListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ManageSenders.aspx.cs">
       <DependentUpon>ManageSenders.aspx</DependentUpon>
@@ -356,12 +348,12 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="ManageListPage.aspx.cs">
+      <DependentUpon>ManageListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="ManageListPage.aspx.designer.cs">
+      <DependentUpon>ManageListPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

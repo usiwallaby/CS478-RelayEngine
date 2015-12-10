@@ -10,7 +10,7 @@
 namespace CS478_RelayEngine {
     
     
-    public partial class ManageListPage {
+    public partial class WebForm1 {
         
         /// <summary>
         /// form1 control.
@@ -58,13 +58,22 @@ namespace CS478_RelayEngine {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// ListBox1 control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ListBox1;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// SqlDataSource1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
         /// TextBox3 control.

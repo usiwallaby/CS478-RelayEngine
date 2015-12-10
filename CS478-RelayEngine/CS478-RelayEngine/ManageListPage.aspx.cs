@@ -1,22 +1,37 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
 
 namespace CS478_RelayEngine
 {
-    public partial class ManageListPage : System.Web.UI.Page
+    public partial class WebForm1 : System.Web.UI.Page
     {
+        string listid = "0";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Load_Logo();
 
-            //Label2.Text = "CurrentList";
-            //Label2.Text = Session["CurrentList"].ToString();
-           
+            SqlDataSource1.ConnectionString = "Server = tcp:evansvilledayschoolserver.database.windows.net,1433; Database = EvansvilleDaySchoolDatabase; User ID = Usiwallabies@evansvilledayschoolserver; Password = Quokka12; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;";
+            listid = (string)Session["managedlistid"];
+
+            SqlDataSource1.SelectCommand = string.Format("SELECT LIST_NAME FROM LIST WHERE LIST_ID ={0}", listid);
+            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+            string listname = Convert.ToString(dv.Table.Rows[0][0]);
+            TextBox1.Text = listname;
+
+            SqlDataSource1.SelectCommand = string.Format("SELECT COUNT(SUB_ID) FROM SUBSCRIPTION WHERE LIST_ID={0}", listid);
+            SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+            dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+            Label1.Text = Convert.ToString(dv.Table.Rows[0][0]);
+
+            SqlDataSource1.SelectCommand = string.Format("SELECT USER_FNAME,USER_LNAME,USER_PHONE FROM USERS JOIN SUBSCRIPTION ON USERS.USER_ID = SUBSCRIPTION.USER_ID WHERE SUBSCRIPTION.LIST_ID = {0}",listid);
+            SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+
         }
 
         private void Load_Logo()
@@ -47,27 +62,35 @@ namespace CS478_RelayEngine
             dv.Dispose();
         }
 
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = GridView1.Rows[e.RowIndex];
+            string fname = row.Cells[1].Text;
+            string lname = row.Cells[2].Text;
+
+            SqlDataSource1.SelectCommand = string.Format("SELECT USER_ID FROM USERS WHERE USER_FNAME='{0}' AND USER_LNAME='{1}'", fname, lname);
+            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+            string userid = Convert.ToString(dv.Table.Rows[0][0]);
+
+            SqlDataSource1.DeleteCommand = string.Format("DELETE FROM SUBSCRIPTION WHERE USER_ID={0} AND LIST_ID={1}", userid, listid);
+            SqlDataSource1.Delete();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            SqlDataSource1.UpdateCommand = string.Format("UPDATE LIST SET LIST_NAME WHERE LIST_ID={0}",listid);
+            SqlDataSource1.Update();
+        }
+
         protected void Button2_Click(object sender, EventArgs e)
         {
             if (TextBox3.Text == "987")
             {
-                Response.Write("<script>alert('Clear list subs.')</script>");
+                SqlDataSource1.DeleteCommand = string.Format("DELETE FROM SUBSCRIPTION WHERE LIST_ID={0}", listid);
+                SqlDataSource1.Delete();
             }
 
-            if (SendConfirmation.Checked)
-            {
-                Response.Write("<script>alert('Confirmation has been sent!')</script>");
-            }
-        }
-
-        protected void TextBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void SendConfirmation_CheckedChanged(object sender, EventArgs e)
-        {
-
+            Server.Transfer("SenderListManagement.aspx");
         }
     }
 }
