@@ -5,12 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <style type="text/css">
-        .auto-style1 {
-            width: 381px;
-            height: 118px;
-        }
-    </style>
     <link href="~/Content/DylanSite.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -18,8 +12,8 @@
     <div>
     
         <asp:Panel ID="Panel1" runat="server" style="text-align: center">
-            <img alt="" class="auto-style1" src="~/Content/evansville_day_school.jpg" />
-            <br />
+            <asp:Image ID="LogoImage" runat="server" ImageUrl="~/Content/evansville_day_school.jpg" />
+            &nbsp;<br />
             <br />
             Select each list for which you wish to receive alerts. You may select more than one list.<br />
             <br />
@@ -56,8 +50,10 @@
             <asp:Button ID="removeAllButton" runat="server" Text="Remove All" OnClick="removeAllClick" />
             <asp:Button ID="Button3" runat="server" Text="Cancel" />
             <br />
-            <a href="~/SendMessage">Sender</a>
-            <a href="~/AdminSignIn">Admin</a>
+            <asp:Panel ID="Panel5" runat="server">
+                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Sender</asp:LinkButton>
+                <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Admin</asp:LinkButton>
+            </asp:Panel>
             <br />
         </asp:Panel>
     </form>

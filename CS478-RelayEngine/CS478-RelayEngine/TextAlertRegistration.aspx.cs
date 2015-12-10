@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace RelayEngineWebsite
 {
@@ -9,6 +10,8 @@ namespace RelayEngineWebsite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Load_Logo();
+
             SqlConnection con = new SqlConnection(@"Data Source=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             SqlCommand cmd = new SqlCommand("Select LIST_NAME from LIST", con);
             SqlDataAdapter adp = new SqlDataAdapter(cmd);
@@ -17,6 +20,34 @@ namespace RelayEngineWebsite
             listCheckBox.DataSource = dt;
             listCheckBox.DataValueField = "LIST_NAME";
             listCheckBox.DataBind();
+        }
+
+        private void Load_Logo()
+        {
+            string connectionstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            string selectstring = "SELECT ADMIN_LOGONAME FROM ADMINISTRATOR WHERE USER_ID = 0";
+
+            SqlDataSource database = new SqlDataSource(connectionstring, selectstring);
+            DataView dv = (DataView)database.Select(DataSourceSelectArguments.Empty);
+            string filename = (string)dv.Table.Rows[0][0];
+
+            if (System.IO.File.Exists(Server.MapPath("~/Content/") + filename) == true)
+            {
+                LogoImage.ImageUrl = "~/Content/" + filename;
+            }
+            else
+            {
+                LogoImage.ImageUrl = "~/Content/" + "evansville_day_school.jpg";
+
+                string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+                string selstring = "SELECT * FROM ADMINISTRATOR WHERE USER_ID = 0";
+                string updatestring = "UPDATE ADMINISTRATOR SET ADMIN_LOGONAME = 'evansville_day_school.jpg' WHERE USER_ID = 0";
+                SqlDataSource db = new SqlDataSource(connstring, selstring);
+                db.UpdateCommand = updatestring;
+                db.Update();
+            }
+
+            dv.Dispose();
         }
 
         protected void submitButtonClick(object sender, EventArgs e)
@@ -71,6 +102,16 @@ namespace RelayEngineWebsite
             firstNameBox.Text = "";
             lastNameBox.Text = "";
             organizationCodeBox.Text = "";
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("SenderListManagement.aspx");
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("AdminLogin.aspx");
         }
     }
 }
