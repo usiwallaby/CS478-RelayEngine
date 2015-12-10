@@ -43,7 +43,7 @@ namespace RelayEngineWebsite
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Session["managedlistid"] = (string)CheckBoxList1.SelectedItem.Text;
+            Session["managedlistname"] = (string)RadioButtonList1.SelectedItem.Text;
             Server.Transfer("ManageListPage.aspx");
         }
     }
