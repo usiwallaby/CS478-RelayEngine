@@ -58,11 +58,15 @@ namespace RelayEngineWebsite
 
         protected void saveButtonClick(object sender, EventArgs e)
         {
-            String email = emailTextBox.Text;
-            String id = pinTextBox.Text;
-            String insertCommand = "INSERT INTO SENDER (SENDER_ID, SENDER_EMAIL) VALUES ('" + id + "', '" + email + "')";
+            string connectionstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            string selectstring = "SELECT MAX(SENDER_ID) FROM SENDER";
+            SqlDataSource database = new SqlDataSource(connectionstring, selectstring);
+            DataView dv = (DataView)database.Select(DataSourceSelectArguments.Empty);
+            int maxid = (int)dv.Table.Rows[0][0];
 
-            SqlDataSource1.InsertCommand = insertCommand;
+            String email = emailTextBox.Text;
+            int id = maxid + 1;
+            SqlDataSource1.InsertCommand = string.Format("INSERT INTO SENDER (SENDER_ID, SENDER_EMAIL, SENDER_PASSWORD) VALUES({0},'{1}','{2}')", id, email, pinTextBox.Text);
 
             SqlDataSource1.Insert();
         }
