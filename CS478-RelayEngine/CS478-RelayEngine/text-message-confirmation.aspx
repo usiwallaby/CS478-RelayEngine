@@ -13,7 +13,7 @@
         <asp:Label ID="Label1" runat="server" Text="Your message has been sent successfully."></asp:Label>
         <br />
         <br />
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Home" />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Back" />
     
     </div>
     </form>

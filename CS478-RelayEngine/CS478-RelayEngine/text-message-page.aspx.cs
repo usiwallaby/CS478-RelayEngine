@@ -10,7 +10,6 @@ namespace CS478_RelayEngine
     public partial class text_message_page : System.Web.UI.Page
     {
         public static string connectionString = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        public static string testSender = "egestas@mus.com";
         int list_id;
         int tokens;
         int sub_one = 0, sub_two = 0, sub_three = 0, sub_four = 0, sub_five = 0;
@@ -21,6 +20,9 @@ namespace CS478_RelayEngine
         {
             if (!this.IsPostBack)
             {
+                string testSender = (string)Session["username"];
+                if (testSender == null) testSender = "egestas@mus.com";
+
                 Load_Logo();
                 Label5.Text = testSender;
 
@@ -29,7 +31,7 @@ namespace CS478_RelayEngine
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     con.Open();
-                    String commandText = "SELECT LIST_ID FROM LIST WHERE LIST_ID IN (SELECT LIST_ID FROM AUTHORIZATIONS WHERE SENDER_ID IN (SELECT SENDER_ID FROM SENDER WHERE SENDER_EMAIL='egestas@mus.com'));";
+                    String commandText = "SELECT LIST_ID FROM LIST WHERE LIST_ID IN (SELECT LIST_ID FROM AUTHORIZATIONS WHERE SENDER_ID IN (SELECT SENDER_ID FROM SENDER WHERE SENDER_EMAIL='" + testSender + "'));";
 
                     using (SqlCommand cmd = new SqlCommand(commandText, con))
                     {

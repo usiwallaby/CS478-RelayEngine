@@ -11,7 +11,7 @@ namespace CS478_RelayEngine
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("text-message-page.aspx");
         }
     }
 }
