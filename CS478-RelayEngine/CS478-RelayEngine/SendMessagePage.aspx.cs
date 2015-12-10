@@ -62,7 +62,7 @@ namespace CS478_RelayEngine
             {
                 Session["username"] = EmailAddress;
 
-                Response.Redirect("TextMsgPage.aspx");
+                Response.Redirect("text-message-page.aspx");
             }
             else
             {
