@@ -1,5 +1,10 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 namespace CS478_RelayEngine
 {
@@ -11,17 +16,30 @@ namespace CS478_RelayEngine
         }
 
         //Looks at the Admin Login Information the User enters.
-        protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)
         {
-            string AdminUsername = Login1.UserName;
-            string AdminPassword = Login1.Password;
+            string AdminUsername = TextBox1.Text;
+            string AdminPassword = TextBox2.Text;
 
-                //Compare AdminUsername to database
-                //Compare AdminPassword to database
 
-            Login1.DestinationPageUrl = "OrgMgmt.aspx";
+            string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            string selstring = "SELECT * FROM ADMINISTRATOR";
+            SqlDataSource db = new SqlDataSource(connstring, selstring);
+            DataView dv = (DataView)db.Select(DataSourceSelectArguments.Empty);
+            string admin = (string)dv.Table.Rows[0][4];
+            string password = (string)dv.Table.Rows[0][5];
 
-            
+            if (admin == AdminUsername && password == AdminPassword)
+            {
+                Session["username"] = AdminUsername;
+
+                Response.Redirect("OrgMgmt.aspx");
+            }
+
+            else
+            {
+                Response.Redirect("AdminLogin.aspx");
+            }
         }
     }
 }
