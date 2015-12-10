@@ -55,16 +55,25 @@ namespace CS478_RelayEngine
             string selstring = "SELECT * FROM SENDER";
             SqlDataSource db = new SqlDataSource(connstring, selstring);
             DataView dv = (DataView)db.Select(DataSourceSelectArguments.Empty);
+            int count = dv.Table.Rows.Count;
             string email = (string)dv.Table.Rows[0][1];
             string password = (string)dv.Table.Rows[0][2];
-
-            if (EmailAddress == email && Password == password)
+            int i = 0;
+            bool status = false;
+            while (i < count)
             {
-                Session["username"] = EmailAddress;
-
-                Response.Redirect("text-message-page.aspx");
+                email = (string)dv.Table.Rows[i][1];
+                password = (string)dv.Table.Rows[i][2];
+                if (EmailAddress == email && Password == password)
+                {
+                    Session["username"] = EmailAddress;
+                    Response.Redirect("text-message-page.aspx");
+                    status = true;
+                }
+                else status = false;
+                i++;
             }
-            else
+            if (status == false)
             {
                 Response.Redirect("SendMessagePage.aspx");
             }
