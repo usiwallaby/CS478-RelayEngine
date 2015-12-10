@@ -73,11 +73,12 @@
                 </tr>
                 <tr>
                     <td class="auto-style3">Alerts Subscribed</td>
-                    <td class="auto-style7">&nbsp;</td>
+                    <td class="auto-style7">
+                        <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
+                    </td>
                 </tr>
             </table>
         <table class="auto-style1">
-                    <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
             </table>
             <asp:Panel ID="Panel2" runat="server" style="text-align: center">
             <p>We've sent a confirmation code to your cellphone. To complete registration, enter this code and hit submit. You must complete this step to be registered.</p>
