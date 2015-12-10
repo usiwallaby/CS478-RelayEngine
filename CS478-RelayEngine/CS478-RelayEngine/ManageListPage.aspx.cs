@@ -19,7 +19,8 @@ namespace CS478_RelayEngine
             SqlDataSource1.ConnectionString = "Server = tcp:evansvilledayschoolserver.database.windows.net,1433; Database = EvansvilleDaySchoolDatabase; User ID = Usiwallabies@evansvilledayschoolserver; Password = Quokka12; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;";
             listid = (string)Session["managedlistid"];
 
-            SqlDataSource1.SelectCommand = string.Format("SELECT LIST_NAME FROM LIST WHERE LIST_ID ={0}", listid);
+
+            SqlDataSource1.SelectCommand = string.Format("SELECT LIST_NAME FROM LIST WHERE LIST_ID ='{0}'", listid);
             DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
             string listname = Convert.ToString(dv.Table.Rows[0][0]);
             TextBox1.Text = listname;

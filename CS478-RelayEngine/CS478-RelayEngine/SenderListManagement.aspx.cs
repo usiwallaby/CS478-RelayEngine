@@ -40,5 +40,11 @@ namespace RelayEngineWebsite
 
             dv.Dispose();
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Session["managedlistid"] = (string)CheckBoxList1.SelectedItem.Text;
+            Server.Transfer("ManageListPage.aspx");
+        }
     }
 }

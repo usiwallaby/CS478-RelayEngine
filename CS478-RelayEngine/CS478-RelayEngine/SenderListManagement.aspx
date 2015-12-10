@@ -30,7 +30,7 @@
     
     
         <asp:Panel ID="Panel2" runat="server" style="text-align: center">
-            <asp:Button ID="Button1" runat="server" Text="Update" />
+            <asp:Button ID="Button1" runat="server" Text="Update" OnClick="Button1_Click" />
             <br />
             <a href="ManageSenders.aspx">Return to Manage Senders page</a>
             <br />

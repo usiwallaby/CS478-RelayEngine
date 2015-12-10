@@ -18,8 +18,8 @@
     <div>
     
         <asp:Panel ID="Panel3" runat="server" CssClass="logoPanelClass">
-            <img alt="" class="auto-style1" src="~/Content/evansville_day_school.jpg" />
-        </asp:Panel>
+            <asp:Image ID="LogoImage" runat="server" ImageUrl="~/Content/evansville_day_school.jpg" />
+            &nbsp;</asp:Panel>
         <br />
         <br />
         <asp:Panel ID="Panel1" runat="server">
