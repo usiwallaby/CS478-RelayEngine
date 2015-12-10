@@ -9,10 +9,6 @@
         .auto-style2 {
             text-align: center;
         }
-        .auto-style3 {
-            width: 381px;
-            height: 118px;
-        }
         .auto-style4 {
             width: 100%;
         }
@@ -22,7 +18,7 @@
     <form id="form1" runat="server">
     <div>
     
-        <asp:Image ID="Image1" runat="server" class="auto-style3" ImageUrl="evansville_day_school.jpg" />
+            <asp:Image ID="LogoImage" runat="server" ImageUrl="~/Content/evansville_day_school.jpg" />
         <br />
         <br />
         Custom URL:&nbsp; <asp:Label ID="Label2" runat="server" Text="https://www.notarealwebsite/CS478"></asp:Label>
@@ -76,7 +72,7 @@
             </tr>
         </table>
         <p>
-            <asp:HyperLink ID="Return" runat="server" NavigateUrl="~/OrgMgmt.aspx">Return to Organization Management Page</asp:HyperLink>
+            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">LinkButton</asp:LinkButton>
         </p>
     </form>
 </body>
