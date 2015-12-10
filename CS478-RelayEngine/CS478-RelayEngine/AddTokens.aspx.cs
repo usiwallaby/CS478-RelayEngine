@@ -1,4 +1,7 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
@@ -10,12 +13,20 @@ namespace CS478_RelayEngine
         protected void Page_Load(object sender, EventArgs e)
         {
             Load_Logo();
-           // Label1.Text = UserTokenCount;
+            //string loggedin = Session["username"].ToString();
+            //Get usernames tokens from database = label1
+
+            string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            string selstring = "SELECT * FROM ADMINISTRATOR";
+            SqlDataSource db = new SqlDataSource(connstring, selstring);
+            DataView dv = (DataView)db.Select(DataSourceSelectArguments.Empty);
+            int tokens = (int)dv.Table.Rows[0][1];
+            Label1.Text = Convert.ToString(tokens);
         }
 
         private void Load_Logo()
         {
-            string connectionstring = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\EvansvilleDaySchoolDatabase.mdf;Integrated Security=True";
+            string connectionstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             string selectstring = "SELECT ADMIN_LOGONAME FROM ADMINISTRATOR WHERE USER_ID = 0";
 
             SqlDataSource database = new SqlDataSource(connectionstring, selectstring);
@@ -30,7 +41,7 @@ namespace CS478_RelayEngine
             {
                 LogoImage.ImageUrl = "~/Content/" + "evansville_day_school.jpg";
 
-                string connstring = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Project_Database.mdf;Integrated Security=True";
+                string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
                 string selstring = "SELECT * FROM ADMINISTRATOR WHERE USER_ID = 0";
                 string updatestring = "UPDATE ADMINISTRATOR SET ADMIN_LOGONAME = 'evansville_day_school.jpg' WHERE USER_ID = 0";
                 SqlDataSource db = new SqlDataSource(connstring, selstring);
@@ -96,9 +107,20 @@ namespace CS478_RelayEngine
                     temp2 = temp1 + temp2;
                     temp1 = 0;
 
-                    
+                    string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+                    string selstring = "SELECT * FROM ADMINISTRATOR";
+                    SqlDataSource db = new SqlDataSource(connstring, selstring);
+                    DataView dv = (DataView)db.Select(DataSourceSelectArguments.Empty);
+                    int dbTokens = (int)dv.Table.Rows[0][1];
+                    FinalTokenCount = FinalTokenCount + dbTokens;
+                    string updatestring = String.Format("UPDATE ADMINISTRATOR SET ADMIN_TOKENS = {0}", FinalTokenCount);
+                    string finalTokens = Convert.ToString(FinalTokenCount);
+                    db.UpdateCommand = updatestring;
+                    db.Update();
 
+                    Response.Redirect("AddTokens.aspx");
                     //AddFinalTokenCount to database
+                    //Change token count on label 1
                 }
             }
         }
