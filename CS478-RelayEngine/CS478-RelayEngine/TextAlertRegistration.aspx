@@ -24,8 +24,9 @@
     
     </div>
         <asp:Panel ID="Panel2" runat="server" CssClass="textAlertListPanelClass">
-            SMS Text Alert Lists<br />
-            <asp:CheckBoxList ID="listCheckBox" runat="server" Font-Underline="False" CssClass="listCheckBox" Height="16px" Width="724px" />
+            SMS Text Alert Lists<asp:RadioButtonList ID="RadioButtonList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="LIST_NAME" DataValueField="LIST_NAME">
+            </asp:RadioButtonList>
+            <br />
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:EvansvilleDaySchoolDatabaseConnectionString %>" SelectCommand="SELECT [LIST_NAME] FROM [LIST]"></asp:SqlDataSource>
         </asp:Panel>
         <asp:Panel ID="Panel3" runat="server" Wrap="False">
@@ -40,8 +41,8 @@
             Last Name&nbsp;
             <asp:TextBox ID="lastNameBox" runat="server" CssClass="textBox" Wrap="False"></asp:TextBox>
             <br />
-            Organization Security Code
-            <asp:TextBox ID="organizationCodeBox" runat="server" MaxLength="5" Width="72px"></asp:TextBox>
+            <asp:Label ID="Label1" runat="server" Text="Organization Security Code"></asp:Label>
+&nbsp;<asp:TextBox ID="organizationCodeBox" runat="server" MaxLength="5" Width="72px"></asp:TextBox>
         </asp:Panel>
         <asp:Panel ID="Panel4" runat="server" style="text-align: center; height: 64px">
             <asp:Label ID="warningLabel" runat="server"></asp:Label>

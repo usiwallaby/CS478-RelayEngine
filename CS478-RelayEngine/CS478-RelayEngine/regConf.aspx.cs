@@ -16,12 +16,7 @@ namespace CS478_RelayEngine
             Label5.Text = Session["lastCell"].ToString();
             Label2.Text = Session["firstName"].ToString();
             Label3.Text = Session["lastName"].ToString();
-            Label6.Text = Session["lists"].ToString();
-            //Label1.Text = "812";
-            //Label2.Text = "Jane";
-            //Label3.Text = "Doe";
-            //Label4.Text = "555";
-            //Label5.Text = "5555";
+            Label6.Text = Session["list"].ToString();
 
         }
 

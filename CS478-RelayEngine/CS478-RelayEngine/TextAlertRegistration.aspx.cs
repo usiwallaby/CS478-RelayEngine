@@ -12,14 +12,29 @@ namespace RelayEngineWebsite
         {
             Load_Logo();
 
-            SqlConnection con = new SqlConnection(@"Data Source=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            SqlCommand cmd = new SqlCommand("Select LIST_NAME from LIST", con);
-            SqlDataAdapter adp = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-            listCheckBox.DataSource = dt;
-            listCheckBox.DataValueField = "LIST_NAME";
-            listCheckBox.DataBind();
+            string connectionstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            SqlDataSource1.SelectCommand = "Select LIST_NAME from LIST";
+            SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+            //SqlConnection con = new SqlConnection(@"Data Source=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            //SqlCommand cmd = new SqlCommand("Select LIST_NAME from LIST", con);
+            //SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            //DataTable dt = new DataTable();
+            //adp.Fill(dt);
+            //listCheckBox.DataSource = dt;
+            //listCheckBox.DataValueField = "LIST_NAME";
+            //listCheckBox.DataBind();
+
+            connectionstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            string selectstring = "SELECT ADMIN_SECURITYCODE FROM ADMINISTRATOR WHERE USER_ID = 0";
+            SqlDataSource database = new SqlDataSource(connectionstring, selectstring);
+            DataView dv = (DataView)database.Select(DataSourceSelectArguments.Empty);
+            string code = (string)dv.Table.Rows[0][0];
+
+            if (code == "No Code Set")
+            {
+                organizationCodeBox.Visible = false;
+                Label1.Visible = false;
+            }
         }
 
         private void Load_Logo()
@@ -58,7 +73,7 @@ namespace RelayEngineWebsite
 
             phoneNumber += phoneNumberBox1.Text + phoneNumberBox2.Text + phoneNumberBox3.Text;
 
-            if (phoneNumberBox1.Text == "" || phoneNumberBox2.Text == "" || phoneNumberBox3.Text == "" || firstNameBox.Text == "" || lastNameBox.Text == "" || organizationCodeBox.Text == "")
+            if (phoneNumberBox1.Text == "" || phoneNumberBox2.Text == "" || phoneNumberBox3.Text == "" || firstNameBox.Text == "" || lastNameBox.Text == "")
             {
                 warningLabel.Text = "Please enter all fields.";
                 okayToSend = false;
@@ -90,7 +105,14 @@ namespace RelayEngineWebsite
                 SqlDataSource1.InsertCommand = insertCommand;
                 SqlDataSource1.Insert();
 
-                Response.Redirect("ConfirmationPage.aspx");
+                Session["areaCode"] = phoneNumberBox1.Text;
+                Session["firstCell"] = phoneNumberBox2.Text;
+                Session["lastCell"] = phoneNumberBox3.Text;
+                Session["firstName"] = firstNameBox.Text;
+                Session["lastName"] = lastNameBox.Text;
+                Session["list"] = RadioButtonList1.SelectedItem.Text;
+
+                Server.Transfer("regConf.aspx");
             }
         }
 
@@ -106,7 +128,7 @@ namespace RelayEngineWebsite
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            Server.Transfer("SenderListManagement.aspx");
+            Server.Transfer("SendMessagePage.aspx");
         }
 
         protected void LinkButton2_Click(object sender, EventArgs e)
