@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
 
 namespace CS478_RelayEngine
 {
@@ -12,34 +12,61 @@ namespace CS478_RelayEngine
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Load_Logo();
         }
 
-        //Looks at the Admin Login Information the User enters.
+        private void Load_Logo()
+        {
+            string connectionstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            string selectstring = "SELECT ADMIN_LOGONAME FROM ADMINISTRATOR WHERE USER_ID = 0";
+
+            SqlDataSource database = new SqlDataSource(connectionstring, selectstring);
+            DataView dv = (DataView)database.Select(DataSourceSelectArguments.Empty);
+            string filename = (string)dv.Table.Rows[0][0];
+
+            if (System.IO.File.Exists(Server.MapPath("~/Content/") + filename) == true)
+            {
+                LogoImage.ImageUrl = "~/Content/" + filename;
+            }
+            else
+            {
+                LogoImage.ImageUrl = "~/Content/" + "evansville_day_school.jpg";
+
+                string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+                string selstring = "SELECT * FROM ADMINISTRATOR WHERE USER_ID = 0";
+                string updatestring = "UPDATE ADMINISTRATOR SET ADMIN_LOGONAME = 'evansville_day_school.jpg' WHERE USER_ID = 0";
+                SqlDataSource db = new SqlDataSource(connstring, selstring);
+                db.UpdateCommand = updatestring;
+                db.Update();
+            }
+
+            dv.Dispose();
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("TextAlertRegistration.aspx");
+        }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
-           // string AdminUsername = TextBox1.Text;
-           // string AdminPassword = TextBox2.Text;
+            string connectionstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            string selectstring = "SELECT ADMIN_USERNAME, ADMIN_PASSWORD FROM ADMINISTRATOR WHERE USER_ID = 0";
 
+            SqlDataSource database = new SqlDataSource(connectionstring, selectstring);
+            DataView dv = (DataView)database.Select(DataSourceSelectArguments.Empty);
+            string username = (string)dv.Table.Rows[0][0];
+            string password = (string)dv.Table.Rows[0][1];
 
-            //string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-            //string selstring = "SELECT * FROM ADMINISTRATOR";
-            //SqlDataSource db = new SqlDataSource(connstring, selstring);
-            //DataView dv = (DataView)db.Select(DataSourceSelectArguments.Empty);
-            //string admin = (string)dv.Table.Rows[0][4];
-            //string password = (string)dv.Table.Rows[0][5];
-
-            ////if (admin == AdminUsername && password == AdminPassword)
-            ////{
-            ////    Session["username"] = AdminUsername;
-
-            ////    Response.Redirect("OrgMgmt.aspx");
-            ////}
-
-            //else
-            //{
-            //    Response.Redirect("AdminLogin.aspx");
-            //}
+            if (usernametextbox.Text == username & passwordtextbox.Text == password)
+            {
+                Server.Transfer("OrganizationManagement.aspx");
+            }
+            else
+            {
+                Label1.Text = "Wrong user/password.";
+                Label1.ForeColor = System.Drawing.Color.Red;
+            }
         }
     }
 }
