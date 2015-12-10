@@ -64,7 +64,7 @@ namespace CS478_RelayEngine
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Organization Management Page.aspx");
+            Server.Transfer("OrganizationManagement.aspx");
         }
 
         protected void SaveChangesButton_Click(object sender, EventArgs e)
@@ -102,7 +102,7 @@ namespace CS478_RelayEngine
             {
             }
 
-            Server.Transfer("Organization Management Page.aspx");
+            Server.Transfer("OrganizationManagement.aspx");
         }
     }
 }

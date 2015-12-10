@@ -1,13 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Update Logo Page.aspx.cs" Inherits="CS478_RelayEngine.Update_Logo_Page" %>
+﻿\<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Update Logo Page.aspx.cs" Inherits="CS478_RelayEngine.Update_Logo_Page" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    </head>
-<body>
-    <form id="form1" runat="server">
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head runat="server"><title></title></head><body><form id="form1" runat="server">
     <div>
     
     </div>
@@ -17,7 +10,8 @@
             <asp:Image ID="LogoImage" runat="server" ImageUrl="~/Content/evansville_day_school.jpg" />
             &nbsp;<br />
             <br />
-            Upload a new photo to use as the website logo above.<br />
+            <asp:Label ID="Label1" runat="server" Text="Upload a new photo to use as the website logo above."></asp:Label>
+            <br />
             <br />
         </asp:Panel>
     
