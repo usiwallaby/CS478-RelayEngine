@@ -14,7 +14,7 @@ namespace CS478_RelayEngine
         {
             Load_Logo();
 
-            Label2.Text = "CurrentList";
+            //Label2.Text = "CurrentList";
             //Label2.Text = Session["CurrentList"].ToString();
            
         }
