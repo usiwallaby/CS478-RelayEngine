@@ -1,4 +1,7 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
@@ -7,6 +10,7 @@ namespace CS478_RelayEngine
 {
     public partial class SendMessagePage : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Load_Logo();
@@ -14,7 +18,7 @@ namespace CS478_RelayEngine
 
         private void Load_Logo()
         {
-            string connectionstring = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\EvansvilleDaySchoolDatabase.mdf;Integrated Security=True";
+            string connectionstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             string selectstring = "SELECT ADMIN_LOGONAME FROM ADMINISTRATOR WHERE USER_ID = 0";
 
             SqlDataSource database = new SqlDataSource(connectionstring, selectstring);
@@ -23,13 +27,13 @@ namespace CS478_RelayEngine
 
             if (System.IO.File.Exists(Server.MapPath("~/Content/") + filename) == true)
             {
-                LogoImage.ImageUrl = "~/Content/" + filename;
+                LogoImage0.ImageUrl = "~/Content/" + filename;
             }
             else
             {
-                LogoImage.ImageUrl = "~/Content/" + "evansville_day_school.jpg";
+                LogoImage0.ImageUrl = "~/Content/" + "evansville_day_school.jpg";
 
-                string connstring = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Project_Database.mdf;Integrated Security=True";
+                string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
                 string selstring = "SELECT * FROM ADMINISTRATOR WHERE USER_ID = 0";
                 string updatestring = "UPDATE ADMINISTRATOR SET ADMIN_LOGONAME = 'evansville_day_school.jpg' WHERE USER_ID = 0";
                 SqlDataSource db = new SqlDataSource(connstring, selstring);
@@ -43,7 +47,38 @@ namespace CS478_RelayEngine
         protected void Button1_Click(object sender, EventArgs e)
         {
             // verify login credentials
-            Response.Redirect("TextMsgPage.aspx");
+            string EmailAddress = TextBox1.Text;
+            string Password = TextBox2.Text;
+
+
+            string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            string selstring = "SELECT * FROM SENDER";
+            SqlDataSource db = new SqlDataSource(connstring, selstring);
+            DataView dv = (DataView)db.Select(DataSourceSelectArguments.Empty);
+            string email = (string)dv.Table.Rows[0][1];
+            string password = (string)dv.Table.Rows[0][2];
+
+            if (EmailAddress == email && Password == password)
+            {
+                Session["username"] = EmailAddress;
+
+                Response.Redirect("TextMsgPage.aspx");
+            }
+            else
+            {
+                Response.Redirect("SendMessagePage.aspx");
+            }
+
+        }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
