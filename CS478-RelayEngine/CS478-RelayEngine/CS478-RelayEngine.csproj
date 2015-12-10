@@ -56,6 +56,10 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -78,9 +82,6 @@
     </Reference>
     <Reference Include="Microsoft.ScriptManager.WebForms">
       <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
@@ -168,7 +169,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="ManageListPage.aspx" />
+    <Content Include="ManageSenders.aspx" />
     <Content Include="Organization Security Code Page.aspx" />
+    <Content Include="OrganizationManagement.aspx" />
     <Content Include="regConf.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -201,6 +204,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="SenderListManagement.aspx" />
     <Content Include="SendMessagePage.aspx" />
     <Content Include="Site.Master" />
     <Content Include="sql example.aspx" />
@@ -258,6 +262,13 @@
     <Compile Include="ManageListPage.aspx.designer.cs">
       <DependentUpon>ManageListPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ManageSenders.aspx.cs">
+      <DependentUpon>ManageSenders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageSenders.aspx.designer.cs">
+      <DependentUpon>ManageSenders.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Organization Security Code Page.aspx.cs">
       <DependentUpon>Organization Security Code Page.aspx</DependentUpon>
@@ -266,6 +277,13 @@
     <Compile Include="Organization Security Code Page.aspx.designer.cs">
       <DependentUpon>Organization Security Code Page.aspx</DependentUpon>
     </Compile>
+    <Compile Include="OrganizationManagement.aspx.cs">
+      <DependentUpon>OrganizationManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrganizationManagement.aspx.designer.cs">
+      <DependentUpon>OrganizationManagement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="regConf.aspx.cs">
       <DependentUpon>regConf.aspx</DependentUpon>
@@ -273,6 +291,13 @@
     </Compile>
     <Compile Include="regConf.aspx.designer.cs">
       <DependentUpon>regConf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SenderListManagement.aspx.cs">
+      <DependentUpon>SenderListManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SenderListManagement.aspx.designer.cs">
+      <DependentUpon>SenderListManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="SendMessagePage.aspx.cs">
       <DependentUpon>SendMessagePage.aspx</DependentUpon>
@@ -339,7 +364,9 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
