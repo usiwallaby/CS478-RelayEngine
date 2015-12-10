@@ -65,50 +65,36 @@ namespace CS478_RelayEngine
         {
             string connstring = "Server=tcp:evansvilledayschoolserver.database.windows.net,1433;Database=EvansvilleDaySchoolDatabase;User ID=Usiwallabies@evansvilledayschoolserver;Password=Quokka12;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             string selstring = "SELECT * FROM SUBSCRIPTION JOIN USERS ON USERS.USER_ID = SUBSCRIPTION.USER_ID JOIN LIST ON SUBSCRIPTION.LIST_ID =  LIST.LIST_ID";
-            string insertstring = "INSERT INTO USERS VALUES (@fName, @lName @phone)";
+            
+            string phone = Label1.Text + Label4.Text + Label5.Text;
+            string fname = Label2.Text;
+            string lname = Label3.Text;
+            string lists = Label6.Text;
+
             SqlDataSource db = new SqlDataSource(connstring, selstring);
             DataView dv = (DataView)db.Select(DataSourceSelectArguments.Empty);
             string FirstName = (string)dv.Table.Rows[0][4];
             string LastName = (string)dv.Table.Rows[0][5];
             string Phone = (string)dv.Table.Rows[0][6];
-            int userID = (int)dv.Table.Rows[0][0];
-            string updatestring = String.Format("UPDATE USERS SET USER_FNAME={0}Label2.Text, USER_LNAME={1}Label3.Text, USER_PHONE={2}Label1.Text+Label4.Text+Label5.Text WHERE USER_ID={3};"), fname, lname, phone, userid;
+            int userid = (int)dv.Table.Rows[0][0];
+            string updatestring = String.Format("UPDATE USERS SET USER_FNAME={0}, USER_LNAME={1}, USER_PHONE={2} WHERE USER_ID={3};", fname, lname, phone, userid);
             db.UpdateCommand = updatestring;
-            db.InsertCommand = insertstring;
-            db.UpdateParameters.Add("@fName", Label2.Text);
-            db.UpdateParameters.Add("@lName", Label3.Text);
-            db.UpdateParameters.Add("@phone", Label1.Text + Label4.Text + Label5.Text);
-                   
-
+            //db.InsertCommand = insertstring;
 
             if (FirstName == Label2.Text && LastName == Label3.Text) 
             {
-                string firstUpdateString = String.Format("UPDATE USERS SET USER_FNAME={0}Label2.Text, USER_LNAME={1}Label3.Text, USER_PHONE={2}Label1.Text+Label4.Text+Label5.Text WHERE USER_ID={3};", fname, lname, phone, userid);
+                string firstUpdateString = String.Format("UPDATE USERS SET USER_FNAME={0}, USER_LNAME={1}, USER_PHONE={2} WHERE USER_ID={3};", fname, lname, phone, userid);
                 db.UpdateCommand = updatestring;
                 db.Update();
             }
             else
             {
-                db.InsertParameters.Add("@fName", Label2.Text);
-                db.InsertParameters.Add("@lName", Label3.Text);
-                db.InsertParameters.Add("@phone", Label1.Text + Label4.Text + Label5.Text);
+                string insertstring = String.Format("INSERT INTO USERS VALUES {0},{1},{2}", fname, lname, phone);
                 db.Insert();
-                insertstring = "INSERT INTO SUBSCRIPTION VALUES (@lists)";
+                insertstring = String.Format("INSERT INTO SUBSCRIPTION VALUES {0}", lists);
                 db.InsertCommand = insertstring;
-                db.InsertParameters.Add("@lists", Label6.Text);
                 db.Insert();
             }
-
-
-
-
-
-            // send info to database
-            // Label1.Text+Label4.Text+Label5.Text is the cell number
-            // Label2.Text is the first name
-            // Label3.Text is the last name
-            // Label6.Text is a string containing all the subscribed lists from previous page separated by /s
-            
 
             Response.Redirect("TextAlertRegistration.aspx");
 
