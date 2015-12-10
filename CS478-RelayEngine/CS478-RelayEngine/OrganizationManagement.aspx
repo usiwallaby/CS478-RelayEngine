@@ -20,7 +20,7 @@
         <br />
         <a href ="Update Logo Page.aspx">Update Logo</a><br />
         <br />
-        <a href ="ManageListPage.aspx">Manage Lists</a><br />
+        <a href ="ManageListsPage.aspx">Manage Lists</a><br />
         <br />
         <a href ="ManageSenders.aspx">Manage Senders</a><br />
         <br />
