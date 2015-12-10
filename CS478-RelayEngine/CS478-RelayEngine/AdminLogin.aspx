@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="CS478_RelayEngine.AdminLogin" %>
+ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="CS478_RelayEngine.AdminLogin" %>
 
 <!DOCTYPE html>
 
@@ -10,7 +10,10 @@
             text-align: center;
         }
         .auto-style1 {
-            margin-left: 579px;
+            text-align: center;
+        }
+        .auto-style2 {
+            margin-left: 0px;
         }
     </style>
 </head>
@@ -19,13 +22,15 @@
     <div>
     
         Admin Sign In</div>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Login ID="Login1" runat="server" BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" DisplayRememberMe="False" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#333333" Width="231px" CssClass="auto-style1" OnAuthenticate="Login1_Authenticate">
-            <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
-            <LoginButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284775" />
-            <TextBoxStyle Font-Size="0.8em" />
-            <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
-        </asp:Login>
+        <div class="auto-style1">
+&nbsp;&nbsp; Username:
+            <asp:TextBox ID="TextBox1" runat="server" CssClass="auto-style2" Width="169px"></asp:TextBox>
+            &nbsp;&nbsp;<br />
+            Password:&nbsp; <asp:TextBox ID="TextBox2" runat="server" Width="169px"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Log In" />
+        </div>
     </form>
 </body>
 </html>
