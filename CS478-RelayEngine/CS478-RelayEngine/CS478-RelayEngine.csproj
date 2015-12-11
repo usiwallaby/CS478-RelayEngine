@@ -169,6 +169,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="ManageListPage.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="ManageListsPage.aspx" />
     <Content Include="ManageSenders.aspx" />
     <Content Include="Organization Security Code Page.aspx" />
     <Content Include="OrganizationManagement.aspx" />
@@ -253,6 +254,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ManageListsPage.aspx.cs">
+      <DependentUpon>ManageListsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageListsPage.aspx.designer.cs">
+      <DependentUpon>ManageListsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ManageSenders.aspx.cs">
       <DependentUpon>ManageSenders.aspx</DependentUpon>

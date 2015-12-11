@@ -12,17 +12,13 @@
         .auto-style2 {
             margin-left: 674px;
         }
-        .auto-style3 {
-            width: 381px;
-            height: 118px;
-        }
-    </style>
+        </style>
 </head>
 <body style="text-align: center">
     <form id="form1" runat="server">
     <div style="text-align: center">
     
-        <asp:Image ID="Image1" runat="server" ImageUrl="evansville_day_school.jpg" class="auto-style3"/>
+            <asp:Image ID="LogoImage" runat="server" ImageUrl="~/Content/evansville_day_school.jpg" />
         <br />
         <br />
         Alert Lists</div>
@@ -32,19 +28,18 @@
 &nbsp;
             <asp:Button ID="Button1" runat="server" Text="Save" Width="75px" />
         </p>
-        <p style="text-align: left">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Current Lists&nbsp;</p>
         <p style="text-align: center">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+            Current Lists</p>
+        <p style="text-align: center">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" align="center">
                 <Columns>
                     <asp:BoundField DataField="LIST_NAME" HeaderText="LIST_NAME" SortExpression="LIST_NAME" />
-                    <asp:HyperLinkField HeaderText="Manage" NavigateUrl="ManageListPage.aspx" Text="Manage" />
-                    <asp:ButtonField ButtonType="Button" CommandName="Delete" HeaderText="Delete" ShowHeader="True" Text="Delete" />
                 </Columns>
             </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:EvansvilleDaySchoolDatabaseConnectionString %>" SelectCommand="SELECT [LIST_NAME] FROM [LIST]"></asp:SqlDataSource>
         </p>
         <p style="text-align: left">
-            <asp:Button ID="Button2" runat="server" Text="Delete" Width="67px" CssClass="auto-style2" />
+            <asp:Button ID="Button2" runat="server" Text="Delete" Width="67px" CssClass="auto-style2" align="center"/>
         </p>
         <p style="text-align: center">
             <asp:HyperLink ID="Return" runat="server" NavigateUrl="~/OrgMgmt.aspx">Return to Organization Management Page</asp:HyperLink>
